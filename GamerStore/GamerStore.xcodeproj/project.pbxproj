@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09402249C1B84003512B4 /* AppDelegate.swift */; };
-		B8C09407249C1B84003512B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09406249C1B84003512B4 /* ViewController.swift */; };
+		B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */; };
 		B8C0940A249C1B84003512B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C09408249C1B84003512B4 /* Main.storyboard */; };
 		B8C0940C249C1B86003512B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8C0940B249C1B86003512B4 /* Assets.xcassets */; };
 		B8C0940F249C1B86003512B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C0940D249C1B86003512B4 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		B8C093FF249C1B84003512B4 /* GamerStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamerStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C09402249C1B84003512B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B8C09406249C1B84003512B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedViewController.swift; sourceTree = "<group>"; };
 		B8C09409249C1B84003512B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8C0940B249C1B86003512B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8C0940E249C1B86003512B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +54,86 @@
 		B8C09401249C1B84003512B4 /* GamerStore */ = {
 			isa = PBXGroup;
 			children = (
-				B8C09402249C1B84003512B4 /* AppDelegate.swift */,
-				B8C09406249C1B84003512B4 /* ViewController.swift */,
-				B8C09408249C1B84003512B4 /* Main.storyboard */,
-				B8C0940B249C1B86003512B4 /* Assets.xcassets */,
-				B8C0940D249C1B86003512B4 /* LaunchScreen.storyboard */,
-				B8C09410249C1B86003512B4 /* Info.plist */,
+				B8C09417249C1D46003512B4 /* Scenes */,
+				B8C09416249C1D40003512B4 /* Common */,
 			);
 			path = GamerStore;
+			sourceTree = "<group>";
+		};
+		B8C09416249C1D40003512B4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B8C0941E249C1DE6003512B4 /* Assets */,
+				B8C0941D249C1DC3003512B4 /* Externals */,
+				B8C0941C249C1DB0003512B4 /* App */,
+				B8C0941B249C1DAB003512B4 /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B8C09417249C1D46003512B4 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B8C0941A249C1D6D003512B4 /* Favorite Games */,
+				B8C09419249C1D5F003512B4 /* Games Feed */,
+				B8C09418249C1D56003512B4 /* MainTabBar */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		B8C09418249C1D56003512B4 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09408249C1B84003512B4 /* Main.storyboard */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		B8C09419249C1D5F003512B4 /* Games Feed */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */,
+			);
+			path = "Games Feed";
+			sourceTree = "<group>";
+		};
+		B8C0941A249C1D6D003512B4 /* Favorite Games */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Favorite Games";
+			sourceTree = "<group>";
+		};
+		B8C0941B249C1DAB003512B4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B8C0941C249C1DB0003512B4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09410249C1B86003512B4 /* Info.plist */,
+				B8C09402249C1B84003512B4 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B8C0941D249C1DC3003512B4 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
+		B8C0941E249C1DE6003512B4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B8C0940D249C1B86003512B4 /* LaunchScreen.storyboard */,
+				B8C0940B249C1B86003512B4 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C09407249C1B84003512B4 /* ViewController.swift in Sources */,
+				B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */,
 				B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -266,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -281,13 +353,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 969Y6REAB6;
-				INFOPLIST_FILE = GamerStore/Info.plist;
+				INFOPLIST_FILE = GamerStore/Common/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmedramy.gamerstore.GamerStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -300,13 +374,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 969Y6REAB6;
-				INFOPLIST_FILE = GamerStore/Info.plist;
+				INFOPLIST_FILE = GamerStore/Common/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmedramy.gamerstore.GamerStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

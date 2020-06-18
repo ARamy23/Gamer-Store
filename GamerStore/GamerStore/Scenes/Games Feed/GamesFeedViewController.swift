@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GamesFeedViewController.swift
 //  GamerStore
 //
 //  Created by Ahmed Ramy on 6/19/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GamesFeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
