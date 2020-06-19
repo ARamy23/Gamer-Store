@@ -19,6 +19,7 @@
 		B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0942F249C35C6003512B4 /* URLSessionManager.swift */; };
 		B8C09433249C42AB003512B4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09432249C42AA003512B4 /* NetworkError.swift */; };
 		B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09435249C4362003512B4 /* Codable + Helpers.swift */; };
+		B8C09438249C4A92003512B4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09437249C4A92003512B4 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B8C0942F249C35C6003512B4 /* URLSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionManager.swift; sourceTree = "<group>"; };
 		B8C09432249C42AA003512B4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B8C09435249C4362003512B4 /* Codable + Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable + Helpers.swift"; sourceTree = "<group>"; };
+		B8C09437249C4A92003512B4 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 		B8C09425249C2299003512B4 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				B8C09437249C4A92003512B4 /* UserDefaultsManager.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */,
 				B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */,
 				B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */,
+				B8C09438249C4A92003512B4 /* UserDefaultsManager.swift in Sources */,
 				B8C09422249C1F91003512B4 /* ExternalsProtocols.swift in Sources */,
 				B8C0942E249C34DD003512B4 /* Endpoint.swift in Sources */,
 				B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */,
