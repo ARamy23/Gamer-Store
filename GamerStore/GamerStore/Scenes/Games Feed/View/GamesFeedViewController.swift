@@ -18,6 +18,12 @@ class GamesFeedViewController: UIViewController {
         return router
     }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+        return refreshControl
+    }()
+    
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
 
@@ -43,25 +49,31 @@ class GamesFeedViewController: UIViewController {
     private func bind() {
         presentation.games.bind = { [weak self] _ in
             guard let self = self else { return }
+            self.refreshControl.endRefreshing()
             self.gamesCollectionView.reloadData()
         }
     }
     
     private func setupUI() {
-        setupGamesFeed()
         setupNavigationBar()
+        setupGamesFeed()
     }
     
     private func setupGamesFeed() {
         gamesCollectionView.register(nibWithCellClass: GamesFeedCollectionViewCell.self)
         gamesCollectionView.delegate = self
         gamesCollectionView.dataSource = self
+        gamesCollectionView.refreshControl = self.refreshControl
     }
     
     private func setupNavigationBar() {
         navigationItem.title = "Games"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController
+    }
+    
+    @objc private func refreshFeed() {
+        presentation.refreshFeed()
     }
 }
 
@@ -72,15 +84,22 @@ extension GamesFeedViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: GamesFeedCollectionViewCell.self, for: indexPath)
-        let games = presentation.games.value ?? []
-        let game = games[indexPath.item]
-        cell.configure(with: game)
+        cell.gameCoverImageView.image = nil
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presentation.didSelectGame(at: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? GamesFeedCollectionViewCell {
+            let games = presentation.games.value ?? []
+            let game = games[indexPath.item]
+            cell.configure(with: game)
+        }
+        presentation.prefetchGames(at: indexPath)
     }
 }
 

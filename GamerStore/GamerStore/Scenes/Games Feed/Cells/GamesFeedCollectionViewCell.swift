@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GamesFeedCollectionViewCell: UICollectionViewCell {
 
@@ -23,10 +24,7 @@ class GamesFeedCollectionViewCell: UICollectionViewCell {
     }
     
     private func downloadImage(_ viewModel: GameViewModel) {
-        ImagesManager.shared.getImage(from: viewModel.imageURL, completionHandler: { [weak self] (image) in
-            guard let self = self else { return }
-            self.gameCoverImageView.image = image
-        })
+        gameCoverImageView.setImageWith(viewModel.imageURL, #imageLiteral(resourceName: "xbox-283116_1920"))
     }
     
     override func prepareForReuse() {
