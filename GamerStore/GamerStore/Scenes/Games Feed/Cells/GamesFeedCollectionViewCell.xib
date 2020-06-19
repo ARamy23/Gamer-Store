@@ -73,6 +73,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="378" height="216"/>
+            <connections>
+                <outlet property="gameCoverImageView" destination="Ekg-5P-gWS" id="nGZ-pB-via"/>
+                <outlet property="gameTitleLabel" destination="eCU-5i-N6j" id="lzM-dG-GNp"/>
+                <outlet property="genresLabel" destination="zCU-mg-iSj" id="DsF-p8-pF9"/>
+                <outlet property="metacriticLabel" destination="MSO-uF-ThC" id="lFL-mO-U7J"/>
+            </connections>
             <point key="canvasLocation" x="374.63768115942031" y="200.22321428571428"/>
         </collectionViewCell>
     </objects>

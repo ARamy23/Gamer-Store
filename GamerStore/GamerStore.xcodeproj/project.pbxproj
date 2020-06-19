@@ -24,6 +24,11 @@
 		B8C09440249C4F4B003512B4 /* GamesFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0943E249C4F4B003512B4 /* GamesFeedCollectionViewCell.swift */; };
 		B8C09441249C4F4B003512B4 /* GamesFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C0943F249C4F4B003512B4 /* GamesFeedCollectionViewCell.xib */; };
 		B8C14CC9249D2F3400091A19 /* UICollectionView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14CC8249D2F3400091A19 /* UICollectionView + Extensions.swift */; };
+		B8C14CCC249D357C00091A19 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14CCB249D357C00091A19 /* Dynamic.swift */; };
+		B8C14CD0249D36BB00091A19 /* GamesFeedPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14CCF249D36BB00091A19 /* GamesFeedPresentation.swift */; };
+		B8C14CD4249D36F600091A19 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14CD3249D36F600091A19 /* GameViewModel.swift */; };
+		B8C14CD7249D3A2600091A19 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14CD6249D3A2600091A19 /* Storyboard.swift */; };
+		B8C14CDB249D3F2D00091A19 /* ImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C14CDA249D3F2D00091A19 /* ImagesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +51,11 @@
 		B8C0943E249C4F4B003512B4 /* GamesFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8C0943F249C4F4B003512B4 /* GamesFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesFeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8C14CC8249D2F3400091A19 /* UICollectionView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extensions.swift"; sourceTree = "<group>"; };
+		B8C14CCB249D357C00091A19 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		B8C14CCF249D36BB00091A19 /* GamesFeedPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedPresentation.swift; sourceTree = "<group>"; };
+		B8C14CD3249D36F600091A19 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		B8C14CD6249D3A2600091A19 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		B8C14CDA249D3F2D00091A19 /* ImagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +126,9 @@
 		B8C09419249C1D5F003512B4 /* Games Feed */ = {
 			isa = PBXGroup;
 			children = (
+				B8C14CCE249D368C00091A19 /* Presentation */,
+				B8C14CCD249D368500091A19 /* View */,
 				B8C0943D249C4F1D003512B4 /* Cells */,
-				B8C0943B249C4D71003512B4 /* GamesFeed.storyboard */,
-				B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */,
 			);
 			path = "Games Feed";
 			sourceTree = "<group>";
@@ -133,6 +143,9 @@
 		B8C0941B249C1DAB003512B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B8C14CD9249D3F1D00091A19 /* ImagesManager */,
+				B8C14CD5249D3A1900091A19 /* Storyboard */,
+				B8C14CCA249D356A00091A19 /* Dynamic */,
 				B8C14CC7249D2F2400091A19 /* UICollectionView */,
 				B8C09434249C4359003512B4 /* Codable */,
 				B8C09428249C23EB003512B4 /* UIView */,
@@ -236,6 +249,56 @@
 			path = UICollectionView;
 			sourceTree = "<group>";
 		};
+		B8C14CCA249D356A00091A19 /* Dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				B8C14CCB249D357C00091A19 /* Dynamic.swift */,
+			);
+			path = Dynamic;
+			sourceTree = "<group>";
+		};
+		B8C14CCD249D368500091A19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B8C0943B249C4D71003512B4 /* GamesFeed.storyboard */,
+				B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B8C14CCE249D368C00091A19 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B8C14CD2249D36E500091A19 /* ViewModels */,
+				B8C14CCF249D36BB00091A19 /* GamesFeedPresentation.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B8C14CD2249D36E500091A19 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B8C14CD3249D36F600091A19 /* GameViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B8C14CD5249D3A1900091A19 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B8C14CD6249D3A2600091A19 /* Storyboard.swift */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B8C14CD9249D3F1D00091A19 /* ImagesManager */ = {
+			isa = PBXGroup;
+			children = (
+				B8C14CDA249D3F2D00091A19 /* ImagesManager.swift */,
+			);
+			path = ImagesManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,7 +372,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8C14CCC249D357C00091A19 /* Dynamic.swift in Sources */,
+				B8C14CD0249D36BB00091A19 /* GamesFeedPresentation.swift in Sources */,
 				B8C0942A249C23F6003512B4 /* UIView + Extensions.swift in Sources */,
+				B8C14CD4249D36F600091A19 /* GameViewModel.swift in Sources */,
+				B8C14CD7249D3A2600091A19 /* Storyboard.swift in Sources */,
 				B8C09433249C42AB003512B4 /* NetworkError.swift in Sources */,
 				B8C14CC9249D2F3400091A19 /* UICollectionView + Extensions.swift in Sources */,
 				B8C09440249C4F4B003512B4 /* GamesFeedCollectionViewCell.swift in Sources */,
@@ -319,6 +386,7 @@
 				B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */,
 				B8C09438249C4A92003512B4 /* UserDefaultsManager.swift in Sources */,
 				B8C09422249C1F91003512B4 /* ExternalsProtocols.swift in Sources */,
+				B8C14CDB249D3F2D00091A19 /* ImagesManager.swift in Sources */,
 				B8C0942E249C34DD003512B4 /* Endpoint.swift in Sources */,
 				B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */,
 			);
