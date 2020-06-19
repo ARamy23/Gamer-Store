@@ -23,10 +23,10 @@ final class URLSessionManager: NetworkProtocol {
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let self = self else { return }
             self.dataTask = self.session.dataTask(with: urlRequest) { (data, response, error) in
-                if let error = error {
-                    onComplete(.failure(error))
-                } else if let data = data, let response = response as? HTTPURLResponse {
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    if let error = error, !error.shouldIgnore() {
+                        onComplete(.failure(error))
+                    } else if let data = data, let response = response as? HTTPURLResponse {
                         switch response.statusCode {
                         case 200...399:
                             guard let parsedModel = data.decode(expectedModel) else {

@@ -24,6 +24,16 @@ protocol Endpoint {
     var method: HTTPMethod { get }
 }
 
+extension Endpoint {
+    var baseURL: String {
+        return "https://api.rawg.io/api/"
+    }
+    
+    var headers: [String: String] {
+        return [:]
+    }
+}
+
 /// Determines how the network manager will encode the parameters when firing the
 /// request
 enum ParametersEncoding {
