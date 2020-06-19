@@ -12,8 +12,14 @@ class GamesFeedViewController: UIViewController {
 
     @IBOutlet weak var gamesCollectionView: UICollectionView!
     
-    lazy var searchController: UISearchController = {
-
+    private lazy var router: RouterProtocol = {
+        let router = Router()
+        router.presentedView = self
+        return router
+    }()
+    
+    private lazy var presentation = GamesFeedPresentation(router: router)
+    private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
 
         searchController.searchBar.placeholder = "Search for the games"
@@ -28,6 +34,7 @@ class GamesFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        presentation.viewDidLoad()
     }
 
     private func setupUI() {
@@ -50,20 +57,20 @@ class GamesFeedViewController: UIViewController {
 
 extension GamesFeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // return presentation.games.value?.count
-        return 1
+        return presentation.games.value?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: GamesFeedCollectionViewCell.self, for: indexPath)
-//        let game = presentation.games.value?[indexPath.item]
-//        cell.configure(from: game)
+        let games = presentation.games.value ?? []
+        let game = games[indexPath.item]
+        cell.configure(with: game)
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        presentation.didSelectGame(at: indexPath)
+        presentation.didSelectGame(at: indexPath)
     }
 }
 
@@ -76,6 +83,6 @@ extension GamesFeedViewController: UICollectionViewDelegateFlowLayout {
 
 extension GamesFeedViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        presentation.searchQueryDidChnage(searchText)
+        presentation.searchQueryDidChnage(searchText)
     }
 }

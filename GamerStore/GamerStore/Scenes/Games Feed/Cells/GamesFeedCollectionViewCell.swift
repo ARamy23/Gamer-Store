@@ -10,9 +10,22 @@ import UIKit
 
 class GamesFeedCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var gameCoverImageView: UIImageView!
+    @IBOutlet weak var gameTitleLabel: UILabel!
+    @IBOutlet weak var genresLabel: UILabel!
+    @IBOutlet weak var metacriticLabel: UILabel!
+    
+    func configure(with viewModel: GameViewModel) {
+        downloadImage(viewModel)
+        gameTitleLabel.text = viewModel.title
+        genresLabel.text = viewModel.genres.joined(separator: ",")
+        metacriticLabel.text = String(viewModel.metacritic)
     }
-
+    
+    private func downloadImage(_ viewModel: GameViewModel) {
+        ImagesManager().getImage(from: viewModel.imageURL, completionHandler: { [weak self] (image) in
+            guard let self = self else { return }
+            self.gameCoverImageView.image = image
+        })
+    }
 }
