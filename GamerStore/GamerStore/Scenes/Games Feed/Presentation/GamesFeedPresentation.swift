@@ -62,11 +62,21 @@ final class GamesFeedPresentation {
     }
     
     private func fetchGamesFeed() {
-//        router.startActivityIndicator()
-//        interactor.fetchGamesFeed { [weak self] games in
-//            guard let self = self else { return }
-//            self.games.value = mapGamesToViewModels()
-//            router.stopActivityIndicator()
-//        }
+        router.startActivityIndicator()
+        GamesFeedFetcher(pagination: pagination,
+                         network: network,
+                         cache: cache)
+            .fetchGamesFeed { [weak self] results in
+                guard let self = self else { return }
+                self.router.stopActivityIndicator()
+                switch results {
+                case .success(let games):
+                    self.games.value = self.mapGamesToViewModels(games)
+                case .failure(let error):
+                    self.router.alert(title: "Error",
+                                      message: error.localizedDescription,
+                                      actions: [("Ok", .default)])
+                }
+        }
     }
 }
