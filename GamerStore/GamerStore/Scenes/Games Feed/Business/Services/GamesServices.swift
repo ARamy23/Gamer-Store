@@ -18,7 +18,7 @@ extension GamesService: Endpoint {
     var path: String {
         switch self {
         case .gamesFeed, .search:
-            return "games/"
+            return "games"
         case let .gameDetails(id):
             return "games/\(id)"
         }

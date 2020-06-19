@@ -10,6 +10,7 @@ import UIKit.UIViewController
 
 enum CachingKey: String {
     case favorites
+    case gamesFeed
 }
 
 typealias AlertAction = (title: String, style: UIAlertAction.Style, action: () -> Void)

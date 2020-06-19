@@ -19,7 +19,6 @@ final class URLSessionManager: NetworkProtocol {
     ///   - onComplete: completion handler
     func call<T: Codable>(_ endpoint: Endpoint, _ expectedModel: T.Type, onComplete: @escaping ((Result<T, Error>) -> Void)) {
         let urlRequest = URLRequestFactory.generateRequest(outOf: endpoint)
-        
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let self = self else { return }
             self.dataTask = self.session.dataTask(with: urlRequest) { (data, response, error) in
@@ -40,6 +39,8 @@ final class URLSessionManager: NetworkProtocol {
                     }
                 }
             }
+            
+            self.dataTask?.resume()
         }
     }
     
