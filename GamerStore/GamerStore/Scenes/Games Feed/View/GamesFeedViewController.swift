@@ -18,7 +18,6 @@ class GamesFeedViewController: UIViewController {
         return router
     }()
     
-    private lazy var presentation = GamesFeedPresentation(router: router)
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
 
@@ -31,12 +30,23 @@ class GamesFeedViewController: UIViewController {
        return searchController
     }()
     
+    private lazy var presentation = GamesFeedPresentation(router: router)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bind()
         presentation.viewDidLoad()
     }
-
+    
+    private func bind() {
+        presentation.games.bind = { [weak self] _ in
+            guard let self = self else { return }
+            self.gamesCollectionView.reloadData()
+        }
+    }
+    
     private func setupUI() {
         setupGamesFeed()
         setupNavigationBar()
