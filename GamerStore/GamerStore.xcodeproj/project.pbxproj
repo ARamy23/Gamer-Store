@@ -12,6 +12,14 @@
 		B8C0940A249C1B84003512B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C09408249C1B84003512B4 /* Main.storyboard */; };
 		B8C0940C249C1B86003512B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8C0940B249C1B86003512B4 /* Assets.xcassets */; };
 		B8C0940F249C1B86003512B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C0940D249C1B86003512B4 /* LaunchScreen.storyboard */; };
+		B8C09422249C1F91003512B4 /* ExternalsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09421249C1F91003512B4 /* ExternalsProtocols.swift */; };
+		B8C09427249C22AC003512B4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09426249C22AC003512B4 /* Router.swift */; };
+		B8C0942A249C23F6003512B4 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09429249C23F6003512B4 /* UIView + Extensions.swift */; };
+		B8C0942E249C34DD003512B4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0942D249C34DD003512B4 /* Endpoint.swift */; };
+		B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0942F249C35C6003512B4 /* URLSessionManager.swift */; };
+		B8C09433249C42AB003512B4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09432249C42AA003512B4 /* NetworkError.swift */; };
+		B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09435249C4362003512B4 /* Codable + Helpers.swift */; };
+		B8C09438249C4A92003512B4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09437249C4A92003512B4 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,14 @@
 		B8C0940B249C1B86003512B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8C0940E249C1B86003512B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8C09410249C1B86003512B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8C09421249C1F91003512B4 /* ExternalsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalsProtocols.swift; sourceTree = "<group>"; };
+		B8C09426249C22AC003512B4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B8C09429249C23F6003512B4 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		B8C0942D249C34DD003512B4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B8C0942F249C35C6003512B4 /* URLSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionManager.swift; sourceTree = "<group>"; };
+		B8C09432249C42AA003512B4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B8C09435249C4362003512B4 /* Codable + Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable + Helpers.swift"; sourceTree = "<group>"; };
+		B8C09437249C4A92003512B4 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +123,8 @@
 		B8C0941B249C1DAB003512B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B8C09434249C4359003512B4 /* Codable */,
+				B8C09428249C23EB003512B4 /* UIView */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -123,6 +141,10 @@
 		B8C0941D249C1DC3003512B4 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				B8C09425249C2299003512B4 /* Cache */,
+				B8C09424249C2295003512B4 /* Network */,
+				B8C09423249C2290003512B4 /* Router */,
+				B8C09421249C1F91003512B4 /* ExternalsProtocols.swift */,
 			);
 			path = Externals;
 			sourceTree = "<group>";
@@ -134,6 +156,56 @@
 				B8C0940B249C1B86003512B4 /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		B8C09423249C2290003512B4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09426249C22AC003512B4 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		B8C09424249C2295003512B4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B8C0942C249C34D1003512B4 /* Common */,
+				B8C0942F249C35C6003512B4 /* URLSessionManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B8C09425249C2299003512B4 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09437249C4A92003512B4 /* UserDefaultsManager.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		B8C09428249C23EB003512B4 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09429249C23F6003512B4 /* UIView + Extensions.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		B8C0942C249C34D1003512B4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B8C0942D249C34DD003512B4 /* Endpoint.swift */,
+				B8C09432249C42AA003512B4 /* NetworkError.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B8C09434249C4359003512B4 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09435249C4362003512B4 /* Codable + Helpers.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +279,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8C0942A249C23F6003512B4 /* UIView + Extensions.swift in Sources */,
+				B8C09433249C42AB003512B4 /* NetworkError.swift in Sources */,
+				B8C09427249C22AC003512B4 /* Router.swift in Sources */,
+				B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */,
+				B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */,
 				B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */,
+				B8C09438249C4A92003512B4 /* UserDefaultsManager.swift in Sources */,
+				B8C09422249C1F91003512B4 /* ExternalsProtocols.swift in Sources */,
+				B8C0942E249C34DD003512B4 /* Endpoint.swift in Sources */,
 				B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
