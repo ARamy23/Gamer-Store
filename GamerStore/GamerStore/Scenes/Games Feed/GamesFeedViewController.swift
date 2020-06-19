@@ -12,15 +12,39 @@ class GamesFeedViewController: UIViewController {
 
     @IBOutlet weak var gamesCollectionView: UICollectionView!
     
+    lazy var searchController: UISearchController = {
+
+        let searchController = UISearchController(searchResultsController: nil)
+
+        searchController.searchBar.placeholder = "Search for the games"
+        searchController.searchBar.searchBarStyle = .minimal
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.definesPresentationContext = true
+        searchController.searchBar.delegate = self
+
+       return searchController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
 
     private func setupUI() {
+        setupGamesFeed()
+        setupNavigationBar()
+    }
+    
+    private func setupGamesFeed() {
         gamesCollectionView.register(nibWithCellClass: GamesFeedCollectionViewCell.self)
         gamesCollectionView.delegate = self
         gamesCollectionView.dataSource = self
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.title = "Games"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.searchController = searchController
     }
 }
 
@@ -43,3 +67,15 @@ extension GamesFeedViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
+extension GamesFeedViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // The numbers here are used according to the given design
+        return CGSize(width: collectionView.frame.width, height: 136)
+    }
+}
+
+extension GamesFeedViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        presentation.searchQueryDidChnage(searchText)
+    }
+}
