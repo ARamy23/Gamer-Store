@@ -9,7 +9,7 @@
 import Foundation
 
 final class UserDefaultsManager: CacheProtocol {
-    func getObject<T>(_ object: T.Type, key: CachingKey) -> T? where T : Decodable, T : Encodable {
+    func getObject<T>(_ object: T.Type, key: String) -> T? where T : Decodable, T : Encodable {
         if object is String.Type {
             return getString(key: key) as? T
         } else {
@@ -17,7 +17,7 @@ final class UserDefaultsManager: CacheProtocol {
         }
     }
     
-    func saveObject<T>(_ object: T, key: CachingKey) where T : Decodable, T : Encodable {
+    func saveObject<T>(_ object: T, key: String) where T : Decodable, T : Encodable {
         if object is String {
             saveString(object as! String, key: key)
         } else {
@@ -25,23 +25,23 @@ final class UserDefaultsManager: CacheProtocol {
         }
     }
     
-    private func getString(key: CachingKey) -> String? {
-        return UserDefaults.standard.string(forKey: key.rawValue)
+    private func getString(key: String) -> String? {
+        return UserDefaults.standard.string(forKey: key)
     }
     
-    func getData(key: CachingKey) -> [Data]? {
-        return UserDefaults.standard.data(forKey: key.rawValue).map({[$0]})
+    func getData(key: String) -> [Data]? {
+        return UserDefaults.standard.data(forKey: key).map({[$0]})
     }
     
-    private func saveString(_ object: String, key: CachingKey) {
-        UserDefaults.standard.set(object, forKey: key.rawValue)
+    private func saveString(_ object: String, key: String) {
+        UserDefaults.standard.set(object, forKey: key)
     }
     
-    func saveData(_ data: Data, key: CachingKey) {
-        UserDefaults.standard.set(data, forKey: key.rawValue)
+    func saveData(_ data: Data, key: String) {
+        UserDefaults.standard.set(data, forKey: key)
     }
     
-    func removeObject(key: CachingKey) {
-        UserDefaults.standard.removeObject(forKey: key.rawValue)
+    func removeObject(key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
     }
 }

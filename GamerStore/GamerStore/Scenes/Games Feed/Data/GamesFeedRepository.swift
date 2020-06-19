@@ -21,7 +21,9 @@ final class GamesFeedRepository {
     
     func fetchGamesFeed(isRefreshing: Bool, _ onFetch: @escaping ((Result<[Game], Error>) -> Void)) {
         
-        if !isRefreshing, let games = cache.getObject([Game].self, key: .gamesFeed) {
+        let isFetchingFirstPage = pagination.page == 1
+        
+        if isFetchingFirstPage, !isRefreshing, let games = cache.getObject([Game].self, key: CachingKey.gamesFeed.rawValue) {
             onFetch(.success(games))
         }
         
@@ -32,7 +34,9 @@ final class GamesFeedRepository {
                     onFetch(.failure(NetworkError.somethingWentWrong))
                     return
                 }
-                self.cache.saveObject(games, key: .gamesFeed)
+                if isFetchingFirstPage {
+                    self.cache.saveObject(games, key: CachingKey.gamesFeed.rawValue)
+                }
                 onFetch(.success(games))
             case let .failure(error):
                 onFetch(.failure(error))

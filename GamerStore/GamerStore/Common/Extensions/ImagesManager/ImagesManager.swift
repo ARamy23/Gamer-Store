@@ -7,33 +7,34 @@
 //
 
 import UIKit.UIImage
+import Kingfisher
 
-class ImagesManager {
+extension UIImageView {
     
-    static let shared = ImagesManager()
-    
-    private var cache: NSCache<NSString, UIImage> = NSCache()
-    
-    func getImage(from urlString: String, completionHandler: @escaping (UIImage?) -> ()) {
-        if let image = cache.object(forKey: urlString as NSString) {
-            DispatchQueue.main.async {
-                completionHandler(image)
-            }
-        } else {
-            guard let url = URL(string: urlString) else { return }
-            DispatchQueue.global(qos: .background).async { [weak self] in
-                guard let self = self else { return }
-                do {
-                    let data = try Data(contentsOf: url)
-                    let img: UIImage! = UIImage(data: data)
-                    self.cache.setObject(img, forKey: urlString as NSString)
-                    DispatchQueue.main.async {
-                        completionHandler(img)
-                    }
-                } catch {
-                    print(error) // TODO: - Replace with Logger
-                }
+    @discardableResult
+    private func downloadImage(_ url: URL, _ placeholderImage: UIImage? = nil) -> DownloadTask? {
+        kf.indicatorType = .activity
+        kf.indicator?.startAnimatingView()
+        return self.kf.setImage(with: url, placeholder: placeholderImage, options: [.transition(.fade(0.6))]) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let value):
+                self.kf.indicator?.stopAnimatingView()
+                self.image = value.image
+            case .failure(let error):
+                debugPrint(error.errorDescription ?? "Error")
             }
         }
+    }
+    
+    func setImageWith(_ linkString: String?, _ placeholderImage: UIImage? = nil) {
+        guard let linkString = linkString, let url = URL(string: linkString) else { return }
+        downloadImage(url, placeholderImage)
+    }
+    
+    func setImageWith(url: URL?, _ placeholderImage: UIImage? = nil) {
+        guard let url = url else { return }
+        downloadImage(url, placeholderImage)
     }
 }

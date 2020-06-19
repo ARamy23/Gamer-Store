@@ -16,11 +16,11 @@ enum CachingKey: String {
 typealias AlertAction = (title: String, style: UIAlertAction.Style, action: () -> Void)
 
 protocol CacheProtocol {
-    func getData(key: CachingKey) -> [Data]?
-    func saveData(_ data: Data, key: CachingKey)
-    func getObject<T: Codable>(_ object: T.Type, key: CachingKey) -> T?
-    func saveObject<T: Codable>(_ object: T, key: CachingKey)
-    func removeObject(key: CachingKey)
+    func getData(key: String) -> [Data]?
+    func saveData(_ data: Data, key: String)
+    func getObject<T: Codable>(_ object: T.Type, key: String) -> T?
+    func saveObject<T: Codable>(_ object: T, key: String)
+    func removeObject(key: String)
 }
 
 protocol RouterProtocol: class {
