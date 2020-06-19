@@ -9,6 +9,9 @@
 import UIKit.UIImage
 
 class ImagesManager {
+    
+    static let shared = ImagesManager()
+    
     private var cache: NSCache<NSString, UIImage> = NSCache()
     
     func getImage(from urlString: String, completionHandler: @escaping (UIImage?) -> ()) {
@@ -20,12 +23,15 @@ class ImagesManager {
             guard let url = URL(string: urlString) else { return }
             DispatchQueue.global(qos: .background).async { [weak self] in
                 guard let self = self else { return }
-                if let data = try? Data(contentsOf: url) {
+                do {
+                    let data = try Data(contentsOf: url)
                     let img: UIImage! = UIImage(data: data)
                     self.cache.setObject(img, forKey: urlString as NSString)
                     DispatchQueue.main.async {
                         completionHandler(img)
                     }
+                } catch {
+                    print(error) // TODO: - Replace with Logger
                 }
             }
         }

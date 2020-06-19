@@ -23,9 +23,14 @@ class GamesFeedCollectionViewCell: UICollectionViewCell {
     }
     
     private func downloadImage(_ viewModel: GameViewModel) {
-        ImagesManager().getImage(from: viewModel.imageURL, completionHandler: { [weak self] (image) in
+        ImagesManager.shared.getImage(from: viewModel.imageURL, completionHandler: { [weak self] (image) in
             guard let self = self else { return }
             self.gameCoverImageView.image = image
         })
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        gameCoverImageView.image = nil
     }
 }
