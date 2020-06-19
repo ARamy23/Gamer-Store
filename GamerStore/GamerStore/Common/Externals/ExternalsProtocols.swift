@@ -38,5 +38,6 @@ protocol RouterProtocol: class {
 
 protocol NetworkProtocol: class {
     func call<T: Codable>(_ endpoint: Endpoint, _ expectedModel: T.Type, onComplete: @escaping ((Result<T, Error>) -> Void))
+    func cancelPreviousTask()
 }
 

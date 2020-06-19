@@ -15,6 +15,10 @@
 		B8C09422249C1F91003512B4 /* ExternalsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09421249C1F91003512B4 /* ExternalsProtocols.swift */; };
 		B8C09427249C22AC003512B4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09426249C22AC003512B4 /* Router.swift */; };
 		B8C0942A249C23F6003512B4 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09429249C23F6003512B4 /* UIView + Extensions.swift */; };
+		B8C0942E249C34DD003512B4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0942D249C34DD003512B4 /* Endpoint.swift */; };
+		B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C0942F249C35C6003512B4 /* URLSessionManager.swift */; };
+		B8C09433249C42AB003512B4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09432249C42AA003512B4 /* NetworkError.swift */; };
+		B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09435249C4362003512B4 /* Codable + Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		B8C09421249C1F91003512B4 /* ExternalsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalsProtocols.swift; sourceTree = "<group>"; };
 		B8C09426249C22AC003512B4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B8C09429249C23F6003512B4 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		B8C0942D249C34DD003512B4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B8C0942F249C35C6003512B4 /* URLSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionManager.swift; sourceTree = "<group>"; };
+		B8C09432249C42AA003512B4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B8C09435249C4362003512B4 /* Codable + Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable + Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,7 @@
 		B8C0941B249C1DAB003512B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B8C09434249C4359003512B4 /* Codable */,
 				B8C09428249C23EB003512B4 /* UIView */,
 			);
 			path = Extensions;
@@ -158,6 +167,8 @@
 		B8C09424249C2295003512B4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B8C0942C249C34D1003512B4 /* Common */,
+				B8C0942F249C35C6003512B4 /* URLSessionManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -175,6 +186,23 @@
 				B8C09429249C23F6003512B4 /* UIView + Extensions.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		B8C0942C249C34D1003512B4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B8C0942D249C34DD003512B4 /* Endpoint.swift */,
+				B8C09432249C42AA003512B4 /* NetworkError.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B8C09434249C4359003512B4 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				B8C09435249C4362003512B4 /* Codable + Helpers.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,9 +277,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8C0942A249C23F6003512B4 /* UIView + Extensions.swift in Sources */,
+				B8C09433249C42AB003512B4 /* NetworkError.swift in Sources */,
 				B8C09427249C22AC003512B4 /* Router.swift in Sources */,
+				B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */,
+				B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */,
 				B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */,
 				B8C09422249C1F91003512B4 /* ExternalsProtocols.swift in Sources */,
+				B8C0942E249C34DD003512B4 /* Endpoint.swift in Sources */,
 				B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
