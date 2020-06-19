@@ -20,3 +20,14 @@ extension NetworkError {
         }
     }
 }
+
+extension Error {
+    func shouldIgnore() -> Bool {
+        switch self.localizedDescription {
+        case "cancelled":
+            return true
+        default:
+            return false
+        }
+    }
+}

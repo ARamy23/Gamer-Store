@@ -84,10 +84,10 @@
     </objects>
     <resources>
         <namedColor name="Gray">
-            <color red="0.54000000000000004" green="0.54000000000000004" blue="0.56000000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.54000002145767212" green="0.54000002145767212" blue="0.56000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Reddish Orange">
-            <color red="0.84999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.85000002384185791" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

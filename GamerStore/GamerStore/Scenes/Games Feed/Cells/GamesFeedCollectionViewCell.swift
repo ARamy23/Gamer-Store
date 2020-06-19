@@ -18,7 +18,7 @@ class GamesFeedCollectionViewCell: UICollectionViewCell {
     func configure(with viewModel: GameViewModel) {
         downloadImage(viewModel)
         gameTitleLabel.text = viewModel.title
-        genresLabel.text = viewModel.genres.joined(separator: ",")
+        genresLabel.text = viewModel.genres
         metacriticLabel.text = String(viewModel.metacritic)
     }
     

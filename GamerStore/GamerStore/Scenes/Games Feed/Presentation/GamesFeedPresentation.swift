@@ -15,6 +15,8 @@ final class GamesFeedPresentation {
     private let router: RouterProtocol
     private let cache: CacheProtocol
     
+    private var pagination: PaginationDetails = (pageSize: 10, page: 1)
+    
     init(router: RouterProtocol,
          network: NetworkProtocol = URLSessionManager(),
          cache: CacheProtocol = UserDefaultsManager()) {
@@ -34,17 +36,30 @@ final class GamesFeedPresentation {
     }
     
     func searchQueryDidChnage(_ searchText: String) {
-//        router.startActivityIndicator()
-//        interactor.search(searchText) { [weak self] games in
-//            guard let self = self else { return }
-//            self.games.value = mapGamesToViewModels(games)
-//            router.stopActivityIndicator()
-//        }
+        guard searchText.count > 3 else { return }
+        router.startActivityIndicator()
+        GamesSearcher(query: searchText,
+                      pagination: pagination,
+                      network: network)
+            .search { [weak self] results in
+                guard let self = self else { return }
+                self.router.stopActivityIndicator()
+                switch results {
+                case let .success(games):
+                    self.games.value = self.mapGamesToViewModels(games)
+                case let .failure(error):
+                    self.router.alert(title: "Error",
+                                      message: error.localizedDescription,
+                                      actions: [("Ok", .default)])
+                }
+                
+                
+        }
     }
     
-//    private func mapGamesToViewModels(_ games: [Game]) -> GameViewModel {
-//        return []
-//    }
+    private func mapGamesToViewModels(_ games: [Game]) -> [GameViewModel] {
+        return games.map { GameViewModel(game: $0) }
+    }
     
     private func fetchGamesFeed() {
 //        router.startActivityIndicator()

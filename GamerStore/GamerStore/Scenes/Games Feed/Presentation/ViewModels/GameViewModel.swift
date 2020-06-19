@@ -11,6 +11,13 @@ import Foundation
 struct GameViewModel {
     let title: String
     let metacritic: Int
-    let genres: [String]
+    let genres: String
     let imageURL: String
+    
+    init(game: Game) {
+        self.title = game.name ?? ""
+        self.metacritic = game.metacritic ?? 0
+        self.genres = (game.genres ?? []).map { $0.name ?? "" }.joined(separator: ",")
+        self.imageURL = game.backgroundImage ?? ""
+    }
 }
