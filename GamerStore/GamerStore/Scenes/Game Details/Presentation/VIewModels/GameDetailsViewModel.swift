@@ -29,4 +29,19 @@ final class GameDetailsViewModel: Codable {
         self.metacritic = game.metacritic ?? 0
         self.genres = game.genres.map { $0.name ?? "" }.joined(separator: ", ")
     }
+    
+    init(game: GameViewModel) {
+        guard let description = game.description,
+            let redditURL = game.redditURL,
+            let websiteURL = game.websiteURL else { fatalError("please don't use this init unless you have a these requirements, i.e.: coming from favorites")}
+        self.id = game.id
+        self.title = game.title
+        self.description = description
+        self.imageURL = game.imageURL
+        self.isFavorite = true
+        self.genres = game.genres
+        self.metacritic = game.metacritic
+        self.redditURL = redditURL
+        self.websiteURL = websiteURL
+    }
 }

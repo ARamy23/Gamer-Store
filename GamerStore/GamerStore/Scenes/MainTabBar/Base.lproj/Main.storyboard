@@ -55,11 +55,11 @@
             </objects>
             <point key="canvasLocation" x="480" y="663"/>
         </scene>
-        <!--Item-->
+        <!--Favourites-->
         <scene sceneID="BeJ-Kh-xOK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JCj-aP-lbd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="favorites-unselected" selectedImage="favorites-selected" id="5uC-Lk-V7E"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="favorites-unselected" selectedImage="favorites-selected" id="5uC-Lk-V7E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zVF-A1-pXg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

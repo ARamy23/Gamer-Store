@@ -15,6 +15,8 @@ class GameDetailsViewController: UIViewController {
     @IBOutlet weak var gameDescriptionLabel: UILabel!
     @IBOutlet weak var readMoreButton: UIButton!
     
+    private var favoriteButton: UIBarButtonItem?
+    
     private lazy var router: RouterProtocol = {
         let router = Router()
         router.presentedView = self
@@ -42,7 +44,7 @@ class GameDetailsViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        let favoriteButton = UIBarButtonItem(title: "Favourite", style: .plain, target: self, action: #selector(didTapFavorite))
+        self.favoriteButton = UIBarButtonItem(title: "Favourite", style: .plain, target: self, action: #selector(didTapFavorite))
         navigationItem.rightBarButtonItem = favoriteButton
         navigationController?.navigationBar.prefersLargeTitles = false
     }
@@ -58,6 +60,11 @@ class GameDetailsViewController: UIViewController {
             UIView.transition(with: self.view, duration: 0.6, options: .transitionCrossDissolve, animations: {
                 self.gameDescriptionLabel.numberOfLines = numberOfLines
             }, completion: nil)
+        }
+        
+        presentation.favoriteButtonTitle.bind = { [weak self] title in
+            guard let self = self else { return }
+            self.favoriteButton?.title = title
         }
     }
     

@@ -15,4 +15,8 @@ enum AppMessages {
         case coudlntFetchGameDetails = "Couldn't Open Game Details, please try again later"
         case couldntFetchGamesFeed = "Couldn't Fetch Games Feed, Please try again later"
     }
+    
+    enum Favorites: String {
+        case noFavoritesFound = "There are no favourites found."
+    }
 }
