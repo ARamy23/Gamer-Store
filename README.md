@@ -99,15 +99,15 @@ we do so by making another implementation and giving injecting this implementati
 i thought that i'd write a lot explaining it, but you can check the tests module and see how everything is written, since talk is cheap anyway
 
 ## Some goodies in this project
-[x] Dark Mode
-[x] Read More
-[x] Offline Favouriting
-[x] Observable Pattern
-[x] Reusable URLSession Network Layer
-[x] centralized text messages for easier Localization
-[x] easy to use Navigation layer
-[x] simple and reusable Screen Loader
-[x] lazy loading (prefetching) pagination
-[x] layout that fits landscape and portrait
-[x] supports iPhone and iPad
-[x] Unit tests
+- [x] Dark Mode
+- [x] Read More
+- [x] Offline Favouriting
+- [x] Observable Pattern
+- [x] Reusable URLSession Network Layer
+- [x] centralized text messages for easier Localization
+- [x] easy to use Navigation layer
+- [x] simple and reusable Screen Loader
+- [x] lazy loading (prefetching) pagination
+- [x] layout that fits landscape and portrait
+- [x] supports iPhone and iPad
+- [x] Unit tests
