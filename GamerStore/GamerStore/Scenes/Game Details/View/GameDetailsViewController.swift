@@ -15,7 +15,8 @@ class GameDetailsViewController: UIViewController {
     @IBOutlet weak var gameDescriptionLabel: UILabel!
     @IBOutlet weak var readMoreButton: UIButton!
     
-    var game: GameViewModel?
+    var game: GameDetailsViewModel?
+    var presentation: GameDetailsPresentation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,34 +25,47 @@ class GameDetailsViewController: UIViewController {
     }
     
     private func setupUI() {
+        setupViewData()
+        setupNavigationBar()
+    }
+    
+    private func setupViewData() {
         gameCoverImageView.setImageWith(game?.imageURL, #imageLiteral(resourceName: "xbox-283116_1920"))
         gameTitleLabel.text = game?.title
-//        gameDescriptionLabel.text = game?.description
-        gameDescriptionLabel.numberOfLines = 4
+        gameDescriptionLabel.text = game?.description
+    }
+    
+    private func setupNavigationBar() {
+        let favoriteButton = UIBarButtonItem(title: "Favourite", style: .plain, target: self, action: #selector(didTapFavorite))
+        navigationItem.rightBarButtonItem = favoriteButton
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func bind() {
-//        presentation.readMoreButtonTitle.bind = { [weak self] title in
-//            guard let self = self else { return }
-//            self.readMoreButton.setTitle(title, for: .normal)
-//        }
+        presentation?.readMoreButtonTitle.bind = { [weak self] title in
+            guard let self = self else { return }
+            self.readMoreButton.setTitle(title, for: .normal)
+        }
         
-//        presentation.description.bind = { [weak self] (text, numberOfLines) in
-//            guard let self = self else { return }
-//            self.gameDescriptionLabel.text = text
-//            gameDescriptionLabel.numberOfLines = numberOfLines
-//        }
+        presentation?.descriptionNumberOfLines.bind = { [weak self] numberOfLines in
+            guard let self = self else { return }
+            self.gameDescriptionLabel.numberOfLines = numberOfLines
+        }
     }
     
     @IBAction private func didTapReadMore() {
-        // presentation.didTapReadMore()
+         presentation?.didTapReadMore()
     }
     
     @IBAction private func didTapVisitReddit() {
-        // presentation.didTapVisitReddit()
+         presentation?.didTapVisitReddit()
     }
     
     @IBAction private func didTapVisitWebsite() {
-        // presentation.didTapVisitWebsite()
+         presentation?.didTapVisitWebsite()
+    }
+    
+    @objc private func didTapFavorite() {
+         presentation?.didTapFavorite()
     }
 }
