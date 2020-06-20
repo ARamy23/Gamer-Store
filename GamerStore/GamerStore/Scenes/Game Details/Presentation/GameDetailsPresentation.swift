@@ -38,6 +38,7 @@ final class GameDetailsPresentation {
     }
     
     func didTapReadMore() {
+        shouldShowAllOfDescription.toggle()
         descriptionNumberOfLines.value = (shouldShowAllOfDescription) ? 0 : 4
     }
     

@@ -17,12 +17,12 @@ final class GameDetailsViewModel: Codable {
     let websiteURL: String
     var isFavorite: Bool = false
     
-    init(game: Game) {
+    init(game: GameDetails) {
         self.id = String(game.id ?? 0)
         self.title = game.name ?? ""
-        self.description = game.description ?? ""
+        self.description = game.descriptionRaw ?? ""
         self.imageURL = game.backgroundImage ?? ""
-        self.redditURL = ""
-        self.websiteURL = ""
+        self.redditURL = game.redditURL ?? ""
+        self.websiteURL = game.website ?? ""
     }
 }

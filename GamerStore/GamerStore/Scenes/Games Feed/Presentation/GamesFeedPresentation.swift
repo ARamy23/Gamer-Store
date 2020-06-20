@@ -39,8 +39,8 @@ final class GamesFeedPresentation {
                 switch results {
                 case let .success(games):
                     self.games.value = self.mapGamesToViewModels(games)
-                case let .failure(error):
-                    self.showAlert(error)
+                case .failure:
+                    self.showAlert(AppMessages.GamesFeed.couldntRefresh.rawValue)
                 }
         }
     }
@@ -57,8 +57,8 @@ final class GamesFeedPresentation {
                 switch results {
                 case let .success(games):
                     self.games.value = self.mapGamesToViewModels(games)
-                case let .failure(error):
-                    self.showAlert(error)
+                case .failure:
+                    self.showAlert(AppMessages.GamesFeed.couldntFindQuery.rawValue) // TODO: - Notify The view that search query was not found
                 }
                 
                 
@@ -83,18 +83,30 @@ final class GamesFeedPresentation {
     }
     
     func didSelectGame(at indexPath: IndexPath) {
-        let vc = Storyboard.GamesFeed.viewController(GameDetailsViewController.self)
-        vc.game = games.value?[indexPath.item]
-        router.push(view: vc)
+        router.startActivityIndicator()
+        let gameID = (games.value ?? [])[indexPath.item].id
+        GameDetailsFetcher(gameID: gameID, network: network).fetchGameDetails { [weak self] results in
+            guard let self = self else { return }
+            self.router.stopActivityIndicator()
+            switch results {
+            case .success(let gameDetails):
+                let vc = Storyboard.GamesFeed.viewController(GameDetailsViewController.self)
+                let gameViewModel = GameDetailsViewModel(game: gameDetails)
+                vc.game = gameViewModel
+                self.router.push(view: vc)
+            case .failure:
+                self.showAlert(AppMessages.GamesFeed.coudlntFetchGameDetails.rawValue)
+            }
+        }
     }
     
     private func mapGamesToViewModels(_ games: [Game]) -> [GameViewModel] {
         return games.map { GameViewModel(game: $0) }
     }
     
-    private func showAlert(_ error: Error) {
+    private func showAlert(_ message: String) {
         self.router.alert(title: "Error",
-                          message: error.localizedDescription,
+                          message: message,
                           actions: [("Ok", .default)])
     }
     
@@ -118,8 +130,8 @@ final class GamesFeedPresentation {
                         self.games.value?.append(contentsOf: viewModels)
                     }
                     
-                case .failure(let error):
-                    self.showAlert(error)
+                case .failure:
+                    self.showAlert(AppMessages.GamesFeed.couldntFetchGamesFeed.rawValue)
                 }
         }
     }
