@@ -84,7 +84,9 @@ extension GamesFeedViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withClass: GamesFeedCollectionViewCell.self, for: indexPath)
-        cell.gameCoverImageView.image = nil
+        let games = presentation.games.value ?? []
+        let game = games[indexPath.item]
+        cell.configure(with: game)
         return cell
         
     }
@@ -94,11 +96,6 @@ extension GamesFeedViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? GamesFeedCollectionViewCell {
-            let games = presentation.games.value ?? []
-            let game = games[indexPath.item]
-            cell.configure(with: game)
-        }
         presentation.prefetchGames(at: indexPath)
     }
 }
