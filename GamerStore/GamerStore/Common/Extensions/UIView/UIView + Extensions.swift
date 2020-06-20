@@ -25,7 +25,7 @@ extension UIView {
     /// - Parameters:
     ///   - activityColor: the color of the activity
     ///   - backgroundColor: the background color of the activity
-    func activityStartAnimating(activityColor: UIColor = .white, backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.75)) {
+    func activityStartAnimating(activityColor: UIColor = GSColor.white.color, backgroundColor: UIColor = GSColor.black.color.withAlphaComponent(0.75)) {
         guard self.viewWithTag(475647) == nil else { return }
         let backgroundView = UIView()
         backgroundView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
