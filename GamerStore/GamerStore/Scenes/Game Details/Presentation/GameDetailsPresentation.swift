@@ -22,8 +22,12 @@ final class GameDetailsPresentation {
     
     private var shouldShowAllOfDescription: Bool = false
     
+    private var cachedFavorites: [GameViewModel]? {
+        return cache.getObject([GameViewModel].self, key: CachingKey.favorites.rawValue)
+    }
+    
     private var isGameAlreadyFavorited: Bool {
-        return cache.getObject(GameDetailsViewModel.self, key: CachingKey.favorites(game.id).key) != nil
+        return cachedFavorites != nil && (cachedFavorites ?? []).contains(where: { $0.id == game.id })
     }
     
     init(game: GameDetailsViewModel,
@@ -40,6 +44,7 @@ final class GameDetailsPresentation {
     func didTapReadMore() {
         shouldShowAllOfDescription.toggle()
         descriptionNumberOfLines.value = (shouldShowAllOfDescription) ? 0 : 4
+        readMoreButtonTitle.value = (shouldShowAllOfDescription) ? "Read Less" : "Read More"
     }
     
     func didTapVisitReddit() {
@@ -52,9 +57,20 @@ final class GameDetailsPresentation {
     
     func didTapFavorite() {
         if isGameAlreadyFavorited {
-            cache.removeObject(key: CachingKey.favorites(game.id).key)
+            var newCacheFavorites = cachedFavorites ?? []
+            newCacheFavorites.removeAll(where: { $0.id == game.id })
+            cache.saveObject(newCacheFavorites, key: CachingKey.favorites.rawValue)
+            favoriteButtonTitle.value = "Favourite"
         } else {
-            cache.saveObject(game, key: CachingKey.favorites(game.id).key)
+            var newCacheFavourites = cachedFavorites ?? []
+            let toBeCachedGame = GameViewModel(game: game)
+            if let index = newCacheFavourites.firstIndex(where: { $0.id == game.id }) {
+                newCacheFavourites[index] = toBeCachedGame
+            } else {
+                newCacheFavourites.append(toBeCachedGame)
+                cache.saveObject([toBeCachedGame], key: CachingKey.favorites.rawValue)
+            }
+            favoriteButtonTitle.value = "Favourited"
         }
     }
     
