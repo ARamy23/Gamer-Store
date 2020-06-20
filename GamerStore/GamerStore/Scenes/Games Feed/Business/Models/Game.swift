@@ -33,6 +33,15 @@ struct Game: Codable {
         case genres
         case description
     }
+    
+    init() {
+        self.id = 0
+        self.name = ""
+        self.backgroundImage = ""
+        self.metacritic = 0
+        self.genres = []
+        self.description = ""
+    }
 }
 
 // MARK: - Genre

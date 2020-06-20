@@ -9,6 +9,11 @@
 import Foundation
 
 enum AppMessages {
+    
+    enum General: String {
+        case somethingWentWrong = "Something Went wrong, please try again later"
+    }
+    
     enum GamesFeed: String {
         case couldntRefresh = "Couldn't Refresh Feed, Please try again later..."
         case couldntFindQuery = "No game has been searched"
@@ -20,7 +25,7 @@ enum AppMessages {
         case noFavoritesFound = "There are no favourites found."
     }
     
-    enum General: String {
-        case somethingWentWrong = "Something Went wrong, please try again later"
+    enum GameDetails: String {
+        case couldntOpenURL = "Couldn't Open URL, Please try again later..."
     }
 }

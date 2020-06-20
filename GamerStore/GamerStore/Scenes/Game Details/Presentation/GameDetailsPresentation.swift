@@ -19,6 +19,7 @@ final class GameDetailsPresentation {
     private let cache: CacheProtocol
     private let game: GameDetailsViewModel
     private let router: RouterProtocol
+    private let system: SystemProtocol
     
     private var shouldShowAllOfDescription: Bool = false
     
@@ -33,11 +34,18 @@ final class GameDetailsPresentation {
     init(game: GameDetailsViewModel,
          router: RouterProtocol,
          network: NetworkProtocol = URLSessionManager(),
-         cache: CacheProtocol = UserDefaultsManager()) {
+         cache: CacheProtocol = UserDefaultsManager(),
+         system: SystemProtocol = System()) {
         self.game = game
         self.network = network
         self.cache = cache
         self.router = router
+        self.system = system
+    }
+    
+    func viewDidLoad() {
+        let favoriteButtonTitle = isGameAlreadyFavorited ? "Favourited" : "Favourite"
+        self.favoriteButtonTitle.value = favoriteButtonTitle
     }
     
     func didTapReadMore() {
@@ -63,36 +71,22 @@ final class GameDetailsPresentation {
         } else {
             var newCacheFavourites = cachedFavorites ?? []
             let toBeCachedGame = GameViewModel(game: game)
-            if let index = newCacheFavourites.firstIndex(where: { $0.id == game.id }) {
-                newCacheFavourites[index] = toBeCachedGame
-            } else {
-                newCacheFavourites.append(toBeCachedGame)
-                cache.saveObject(newCacheFavourites, key: CachingKey.favorites.key)
-            }
+            newCacheFavourites.append(toBeCachedGame)
+            cache.saveObject(newCacheFavourites, key: CachingKey.favorites.key)
             favoriteButtonTitle.value = "Favourited"
         }
     }
     
-    func viewDidLoad() {
-        let favoriteButtonTitle = isGameAlreadyFavorited ? "Favourited" : "Favourite"
-        self.favoriteButtonTitle.value = favoriteButtonTitle
-    }
-    
     private func openURL(_ urlString: String) {
-        guard let url = URL(string: urlString) else {
-            showAlert(NetworkError.somethingWentWrong)
+        guard system.canOpenURLExternally(url: urlString) else {
+            showAlert(AppMessages.GameDetails.couldntOpenURL.rawValue)
             return
         }
         
-        guard UIApplication.shared.canOpenURL(url) else {
-            showAlert(NetworkError.somethingWentWrong)
-            return
-        }
-        
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        system.openURLExternally(url: urlString)
     }
     
-    private func showAlert(_ error: Error) {
-        router.alert(title: "Error", message: error.localizedDescription, actions: [("Ok", .default)])
+    private func showAlert(_ message: String) {
+        router.alert(title: "Error", message: message, actions: [("Ok", .default)])
     }
 }

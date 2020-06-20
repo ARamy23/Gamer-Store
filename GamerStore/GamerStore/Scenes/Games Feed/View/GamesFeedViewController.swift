@@ -103,7 +103,7 @@ class GamesFeedViewController: UIViewController {
 
 extension GamesFeedViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        presentation.searchQueryDidChnage(searchText)
+        presentation.searchQueryDidChange(searchText)
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

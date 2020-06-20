@@ -9,16 +9,28 @@
 import Foundation
 
 // MARK: - GameDetails
-struct GameDetails: Codable {
+final class GameDetails: Codable {
     let id: Int?
     let name, gameDetailsDescription: String?
     let backgroundImage: String?
-    let website: String?
-    let redditURL: String?
-    let descriptionRaw: String?
+    var website: String?
+    var redditURL: String?
+    var descriptionRaw: String?
     let metacritic: Int?
     let genres: [Genre]
 
+    init() {
+        self.id = 0
+        self.name = ""
+        self.gameDetailsDescription = ""
+        self.backgroundImage = ""
+        self.website = ""
+        self.redditURL = ""
+        self.descriptionRaw = ""
+        self.metacritic = 0
+        self.genres = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case gameDetailsDescription = "description"

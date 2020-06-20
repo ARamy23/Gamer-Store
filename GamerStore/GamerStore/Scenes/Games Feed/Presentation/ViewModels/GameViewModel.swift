@@ -9,14 +9,14 @@
 import Foundation
 
 class GameViewModel: Codable {
-    let id: String
+    var id: String
     let title: String
     let metacritic: Int
     let genres: String
     let imageURL: String
-    let description: String?
-    let redditURL: String?
-    let websiteURL: String?
+    var description: String?
+    var redditURL: String?
+    var websiteURL: String?
     
     var didOpenBefore: Bool = false
     
@@ -51,5 +51,16 @@ class GameViewModel: Codable {
         self.description = game.description
         self.redditURL = game.redditURL
         self.websiteURL = game.websiteURL
+    }
+    
+    init() {
+        self.id = ""
+        self.title = ""
+        self.metacritic = 0
+        self.genres = ""
+        self.imageURL = ""
+        self.description = ""
+        self.redditURL = ""
+        self.websiteURL = ""
     }
 }

@@ -51,3 +51,7 @@ protocol NetworkProtocol: class {
     func cancelPreviousTask()
 }
 
+protocol SystemProtocol {
+    func canOpenURLExternally(url: String) -> Bool
+    func openURLExternally(url: String)
+}

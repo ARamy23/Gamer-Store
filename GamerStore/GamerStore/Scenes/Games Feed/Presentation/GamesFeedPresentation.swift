@@ -70,8 +70,9 @@ final class GamesFeedPresentation {
         games.value?.removeAll()
     }
     
-    func searchQueryDidChnage(_ searchText: String) {
+    func searchQueryDidChange(_ searchText: String) {
         guard searchText.count > 3 else { return }
+        self.usedQuery = searchText
         router.startActivityIndicator()
         GamesSearcher(query: searchText,
                       pagination: intendedPagination,
@@ -114,7 +115,7 @@ final class GamesFeedPresentation {
                 fetchGamesFeed()
             case .searching:
                 searchPagination.page += 1
-                searchQueryDidChnage(usedQuery)
+                searchQueryDidChange(usedQuery)
             }
         }
     }
@@ -159,7 +160,7 @@ final class GamesFeedPresentation {
         let currentDisplayedGames = self.games.value ?? []
         let viewModels = self.mapGamesToViewModels(games)
         self.hasReachedEndOfGames = games.count < self.intendedPagination.pageSize
-        if games.isEmpty && currentDisplayedGames.isEmpty {
+        if games.isEmpty && currentDisplayedGames.isEmpty && viewState == .searching {
             self.shouldShowNoGamesFound.value = true
         } else if currentDisplayedGames.isEmpty {
             self.shouldShowNoGamesFound.value = false
