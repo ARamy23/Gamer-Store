@@ -10,7 +10,7 @@ import UIKit
 
 class GamesFeedViewController: UIViewController {
 
-    @IBOutlet weak var gamesCollectionView: UICollectionView!
+    @IBOutlet weak var gamesTableView: UITableView!
     
     private lazy var router: RouterProtocol = {
         let router = Router()
@@ -38,6 +38,10 @@ class GamesFeedViewController: UIViewController {
        return searchController
     }()
     
+    lazy var emptySearchView: EmptyStateViewController = {
+        return EmptyStateViewController(.search)
+    }()
+    
     private lazy var presentation = GamesFeedPresentation(router: router)
     
     
@@ -53,7 +57,12 @@ class GamesFeedViewController: UIViewController {
             guard let self = self else { return }
             self.refreshControl.endRefreshing()
             self.dataSource.games = games
-            self.gamesCollectionView.reloadData()
+            self.gamesTableView.reloadData()
+        }
+        
+        presentation.shouldShowNoGamesFound.bind = { [weak self] shouldShowNoGamesFound in
+            guard let self = self else { return }
+            self.gamesTableView.backgroundView = shouldShowNoGamesFound ? self.emptySearchView.view : nil
         }
     }
     
@@ -63,10 +72,11 @@ class GamesFeedViewController: UIViewController {
     }
     
     private func setupGamesFeed() {
-        gamesCollectionView.register(nibWithCellClass: GamesFeedCollectionViewCell.self)
-        gamesCollectionView.delegate = dataSource
-        gamesCollectionView.dataSource = dataSource
-        gamesCollectionView.refreshControl = self.refreshControl
+        gamesTableView.register(nibWithCellClass: GamesFeedTableViewCell.self)
+        gamesTableView.delegate = dataSource
+        gamesTableView.dataSource = dataSource
+        gamesTableView.refreshControl = self.refreshControl
+        gamesTableView.separatorStyle = .none
         
         dataSource.didSelectGame = { [weak self] indexPath in
             guard let self = self else { return }
@@ -83,6 +93,7 @@ class GamesFeedViewController: UIViewController {
         navigationItem.title = "Games"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     @objc private func refreshFeed() {
@@ -93,5 +104,13 @@ class GamesFeedViewController: UIViewController {
 extension GamesFeedViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presentation.searchQueryDidChnage(searchText)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        presentation.didBeginSearching()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presentation.didCancelSearching()
     }
 }

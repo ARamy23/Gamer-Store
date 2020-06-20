@@ -8,9 +8,18 @@
 
 import UIKit.UIViewController
 
-enum CachingKey: String {
+enum CachingKey {
     case favorites
     case gamesFeed
+    case seenGame(_ id: String)
+    
+    var key: String {
+        switch self {
+        case .favorites: return "favorites"
+        case .gamesFeed: return "gamesFeed"
+        case .seenGame(let id): return "seenGame-\(id)"
+        }
+    }
 }
 
 typealias AlertAction = (title: String, style: UIAlertAction.Style, action: () -> Void)

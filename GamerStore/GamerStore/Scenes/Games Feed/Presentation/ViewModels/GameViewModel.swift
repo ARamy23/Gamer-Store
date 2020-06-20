@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GameViewModel: Codable {
+class GameViewModel: Codable {
     let id: String
     let title: String
     let metacritic: Int
@@ -17,6 +17,19 @@ struct GameViewModel: Codable {
     let description: String?
     let redditURL: String?
     let websiteURL: String?
+    
+    var didOpenBefore: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case metacritic
+        case genres
+        case imageURL
+        case description
+        case redditURL
+        case websiteURL
+    }
     
     init(game: Game) {
         self.id = String(game.id ?? 0)

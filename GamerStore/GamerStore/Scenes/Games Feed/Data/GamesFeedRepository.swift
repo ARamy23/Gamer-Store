@@ -23,8 +23,9 @@ final class GamesFeedRepository {
         
         let isFetchingFirstPage = pagination.page == 1
         
-        if isFetchingFirstPage, !isRefreshing, let games = cache.getObject([Game].self, key: CachingKey.gamesFeed.rawValue) {
+        if isFetchingFirstPage, !isRefreshing, let games = cache.getObject([Game].self, key: CachingKey.gamesFeed.key) {
             onFetch(.success(games))
+            return
         }
         
         network.call(GamesService.gamesFeed(pagination.pageSize, pagination.page), GamesFeedResponse.self) { (result) in
@@ -35,7 +36,7 @@ final class GamesFeedRepository {
                     return
                 }
                 if isFetchingFirstPage {
-                    self.cache.saveObject(games, key: CachingKey.gamesFeed.rawValue)
+                    self.cache.saveObject(games, key: CachingKey.gamesFeed.key)
                 }
                 onFetch(.success(games))
             case let .failure(error):

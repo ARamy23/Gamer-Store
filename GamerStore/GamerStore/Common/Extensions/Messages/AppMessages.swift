@@ -19,4 +19,8 @@ enum AppMessages {
     enum Favorites: String {
         case noFavoritesFound = "There are no favourites found."
     }
+    
+    enum General: String {
+        case somethingWentWrong = "Something Went wrong, please try again later"
+    }
 }

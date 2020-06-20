@@ -30,6 +30,7 @@ class GameDetailsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bind()
+        presentation.viewDidLoad()
     }
     
     private func setupUI() {

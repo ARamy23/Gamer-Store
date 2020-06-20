@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
 
-    @IBOutlet weak private var favoriteGamesCollectionView: UICollectionView!
+    @IBOutlet weak private var favoriteGamesTableView: UITableView!
     
     private lazy var router: RouterProtocol = {
         let router = Router()
@@ -26,11 +26,11 @@ class FavoritesViewController: UIViewController {
         return EmptyStateViewController(.favorites)
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         setupUI()
         bind()
-        presentation.viewDidLoad()
+        presentation.viewWillAppear()
     }
     
     private func bind() {
@@ -42,12 +42,12 @@ class FavoritesViewController: UIViewController {
         presentation.favorites.bind = { [weak self] games in
             guard let self = self else { return }
             self.dataSource.games = games
-            self.favoriteGamesCollectionView.reloadData()
+            self.favoriteGamesTableView.reloadData()
         }
         
         presentation.isFavoritesEmpty.bind = { [weak self] isEmpty in
             guard let self = self else { return }
-            self.favoriteGamesCollectionView.backgroundView = (isEmpty) ? self.emptyStateView.view : nil
+            self.favoriteGamesTableView.backgroundView = (isEmpty) ? self.emptyStateView.view : nil
         }
     }
     
@@ -57,13 +57,20 @@ class FavoritesViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        favoriteGamesCollectionView.register(nibWithCellClass: GamesFeedCollectionViewCell.self)
-        favoriteGamesCollectionView.delegate = dataSource
-        favoriteGamesCollectionView.dataSource = dataSource
+        favoriteGamesTableView.register(nibWithCellClass: GamesFeedTableViewCell.self)
+        favoriteGamesTableView.delegate = dataSource
+        favoriteGamesTableView.dataSource = dataSource
+        favoriteGamesTableView.separatorStyle = .none
+        dataSource.canEdit = true
         
         dataSource.didSelectGame = { [weak self] indexPath in
             guard let self = self else { return }
             self.presentation.didSelectGame(at: indexPath)
+        }
+        
+        dataSource.swipesToDelete = { [weak self] indexPath in
+            guard let self = self else { return }
+            self.presentation.swipesToDelete(indexPath)
         }
     }
     
