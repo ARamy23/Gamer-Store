@@ -37,6 +37,7 @@
 		B8C070F6249EC9EB005A3372 /* GameDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C070F5249EC9EB005A3372 /* GameDetailsTests.swift */; };
 		B8C070F9249ECB97005A3372 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C070F8249ECB97005A3372 /* System.swift */; };
 		B8C070FB249ECCF5005A3372 /* SystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C070FA249ECCF5005A3372 /* SystemMock.swift */; };
+		B8C070FE249ED1BA005A3372 /* FavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C070FD249ED1BA005A3372 /* FavoritesTests.swift */; };
 		B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09402249C1B84003512B4 /* AppDelegate.swift */; };
 		B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */; };
 		B8C0940A249C1B84003512B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C09408249C1B84003512B4 /* Main.storyboard */; };
@@ -106,6 +107,7 @@
 		B8C070F5249EC9EB005A3372 /* GameDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsTests.swift; sourceTree = "<group>"; };
 		B8C070F8249ECB97005A3372 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		B8C070FA249ECCF5005A3372 /* SystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMock.swift; sourceTree = "<group>"; };
+		B8C070FD249ED1BA005A3372 /* FavoritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTests.swift; sourceTree = "<group>"; };
 		B8C093FF249C1B84003512B4 /* GamerStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamerStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C09402249C1B84003512B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		B8BD6EFA249EB1C6004AD7F0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B8C070FC249ED1A1005A3372 /* Favorites */,
 				B8C070F4249EC9D2005A3372 /* GameDetails */,
 				B8BD6F00249EB22F004AD7F0 /* GamesFeed */,
 				B8BD6EFD249EB206004AD7F0 /* BaseSceneTests.swift */,
@@ -374,6 +377,14 @@
 				B8C070F8249ECB97005A3372 /* System.swift */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		B8C070FC249ED1A1005A3372 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				B8C070FD249ED1BA005A3372 /* FavoritesTests.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		B8C093F6249C1B84003512B4 = {
@@ -777,6 +788,7 @@
 				B8BD6EF2249EB11F004AD7F0 /* GamerStoreTests.swift in Sources */,
 				B8BD6EFE249EB206004AD7F0 /* BaseSceneTests.swift in Sources */,
 				B8C070F6249EC9EB005A3372 /* GameDetailsTests.swift in Sources */,
+				B8C070FE249ED1BA005A3372 /* FavoritesTests.swift in Sources */,
 				B8BD6EFC249EB1DF004AD7F0 /* GamesFeedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

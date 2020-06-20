@@ -14,7 +14,7 @@ class EmptyStateViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textAlignment = .center
-        label.textColor = #colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1)
+        label.textColor = GSColor.black.color
         label.numberOfLines = 0
         return label
     }()
@@ -23,7 +23,7 @@ class EmptyStateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = GSColor.white.color
         view.addSubview(subtitleLabel)
     }
     

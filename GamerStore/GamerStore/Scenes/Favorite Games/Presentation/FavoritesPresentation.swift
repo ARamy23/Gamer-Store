@@ -49,11 +49,9 @@ final class FavoritesPresentation {
     }
     
     private func getFavoritesFromCache() {
-        if let cachedFavorites = cache.getObject([GameViewModel].self, key: CachingKey.favorites.key), !cachedFavorites.isEmpty {
-            favorites.value =  cachedFavorites
-        } else {
-            isFavoritesEmpty.value = true
-        }
+        let cachedFavorites = cache.getObject([GameViewModel].self, key: CachingKey.favorites.key) ?? []
+        favorites.value =  cachedFavorites
+        isFavoritesEmpty.value = cachedFavorites.isEmpty
     }
     
     private func setupNavigationTitle() {

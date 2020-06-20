@@ -14,9 +14,9 @@ class GameViewModel: Codable {
     let metacritic: Int
     let genres: String
     let imageURL: String
-    let description: String?
-    let redditURL: String?
-    let websiteURL: String?
+    var description: String?
+    var redditURL: String?
+    var websiteURL: String?
     
     var didOpenBefore: Bool = false
     
@@ -59,8 +59,8 @@ class GameViewModel: Codable {
         self.metacritic = 0
         self.genres = ""
         self.imageURL = ""
-        self.description = nil
-        self.redditURL = nil
-        self.websiteURL = nil
+        self.description = ""
+        self.redditURL = ""
+        self.websiteURL = ""
     }
 }
