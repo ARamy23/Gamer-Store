@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,5 +47,166 @@
             </objects>
             <point key="canvasLocation" x="2868.115942028986" y="129.91071428571428"/>
         </scene>
+        <!--Game Details View Controller-->
+        <scene sceneID="m3N-QY-Mhq">
+            <objects>
+                <viewController storyboardIdentifier="GameDetailsViewController" id="3ZD-De-yTu" customClass="GameDetailsViewController" customModule="GamerStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VRy-xc-8e4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FK7-QA-Yb1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="291"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game details title gradient" translatesAutoresizingMaskIntoConstraints="NO" id="hwb-nX-yRh">
+                                <rect key="frame" x="0.0" y="99" width="414" height="192"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game's Title" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-Ys-UHD">
+                                <rect key="frame" x="16" y="232" width="382" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6cD-CM-zOt">
+                                <rect key="frame" x="16" y="307" width="382" height="307.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIW-De-xml">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="76.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHG-je-zyc">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeightMultiple">
+                                                        <real key="value" value="1.8400000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GD-4X-CXX">
+                                                <rect key="frame" x="0.0" y="28.5" width="382" height="48"/>
+                                                <string key="text">Rockstar Games went bigger, since their previous installment of the series. You get complicated and realistic world-building from Liberty City of GTA4 in the setting of lively and diverse Los Santos, from an old favorite GTA San Andreas, 561 different vehicles (Including every transport you can operate) zzzzzzzzzzzzzzz</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeightMultiple">
+                                                        <real key="value" value="1.8400000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="EHG-je-zyc" firstAttribute="top" secondItem="aIW-De-xml" secondAttribute="top" id="8Tq-bC-Tfv"/>
+                                            <constraint firstItem="EHG-je-zyc" firstAttribute="leading" secondItem="aIW-De-xml" secondAttribute="leading" id="Jki-Oz-hJd"/>
+                                            <constraint firstItem="6GD-4X-CXX" firstAttribute="leading" secondItem="aIW-De-xml" secondAttribute="leading" id="Jxx-ID-qZb"/>
+                                            <constraint firstAttribute="trailing" secondItem="EHG-je-zyc" secondAttribute="trailing" id="NIA-77-gDP"/>
+                                            <constraint firstAttribute="trailing" secondItem="6GD-4X-CXX" secondAttribute="trailing" id="RCm-d1-Ai4"/>
+                                            <constraint firstAttribute="bottom" secondItem="6GD-4X-CXX" secondAttribute="bottom" id="cHx-Q5-N5k"/>
+                                            <constraint firstItem="6GD-4X-CXX" firstAttribute="top" secondItem="EHG-je-zyc" secondAttribute="bottom" constant="8" id="rLN-8a-AyG"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGE-Tq-ZyK">
+                                        <rect key="frame" x="0.0" y="92.5" width="382" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="mkU-Z8-LrD"/>
+                                        </constraints>
+                                        <state key="normal" title="Read more"/>
+                                        <connections>
+                                            <action selector="didTapReadMore" destination="3ZD-De-yTu" eventType="touchUpInside" id="kmo-3I-JjS"/>
+                                        </connections>
+                                    </button>
+                                    <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRr-ks-AQu">
+                                        <rect key="frame" x="0.0" y="152.5" width="382" height="1"/>
+                                        <color key="backgroundColor" name="Gray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="VhF-68-GA3"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjI-rf-4HE">
+                                        <rect key="frame" x="0.0" y="169.5" width="382" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="PA3-2K-YvP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Visit reddit">
+                                            <color key="titleColor" name="Black"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapVisitReddit" destination="3ZD-De-yTu" eventType="touchUpInside" id="gPT-Cl-1cs"/>
+                                        </connections>
+                                    </button>
+                                    <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymp-hg-Ju9">
+                                        <rect key="frame" x="0.0" y="229.5" width="382" height="1"/>
+                                        <color key="backgroundColor" name="Gray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Ysr-wh-2Jl"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFc-Js-IS1">
+                                        <rect key="frame" x="0.0" y="246.5" width="382" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="s9u-ea-2xJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Visit website">
+                                            <color key="titleColor" name="Black"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapVisitWebsite" destination="3ZD-De-yTu" eventType="touchUpInside" id="k74-1z-6ap"/>
+                                        </connections>
+                                    </button>
+                                    <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HU7-7k-33e">
+                                        <rect key="frame" x="0.0" y="306.5" width="382" height="1"/>
+                                        <color key="backgroundColor" name="Gray"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="xPH-fP-Ebz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hwb-nX-yRh" firstAttribute="leading" secondItem="FK7-QA-Yb1" secondAttribute="leading" id="1vO-FM-3sr"/>
+                            <constraint firstItem="gKY-Ys-UHD" firstAttribute="leading" secondItem="FK7-QA-Yb1" secondAttribute="leading" constant="16" id="6jS-x4-q2V"/>
+                            <constraint firstItem="FK7-QA-Yb1" firstAttribute="height" secondItem="VRy-xc-8e4" secondAttribute="height" multiplier="0.324777" id="7IB-sY-2wg"/>
+                            <constraint firstItem="gKY-Ys-UHD" firstAttribute="bottom" secondItem="FK7-QA-Yb1" secondAttribute="bottom" constant="-16" id="NBP-vG-JXc"/>
+                            <constraint firstItem="6cD-CM-zOt" firstAttribute="leading" secondItem="xOH-Jq-R51" secondAttribute="leading" constant="16" id="S4x-oJ-x37"/>
+                            <constraint firstItem="hwb-nX-yRh" firstAttribute="bottom" secondItem="FK7-QA-Yb1" secondAttribute="bottom" id="SbY-jV-EW3"/>
+                            <constraint firstItem="gKY-Ys-UHD" firstAttribute="trailing" secondItem="FK7-QA-Yb1" secondAttribute="trailing" constant="-16" id="Vju-8z-NX8"/>
+                            <constraint firstItem="hwb-nX-yRh" firstAttribute="trailing" secondItem="FK7-QA-Yb1" secondAttribute="trailing" id="XG1-Qt-nJM"/>
+                            <constraint firstItem="hwb-nX-yRh" firstAttribute="height" secondItem="FK7-QA-Yb1" secondAttribute="height" multiplier="0.659794" id="bfC-oM-y0f"/>
+                            <constraint firstItem="6cD-CM-zOt" firstAttribute="top" secondItem="FK7-QA-Yb1" secondAttribute="bottom" constant="16" id="bq9-fk-fjg"/>
+                            <constraint firstItem="xOH-Jq-R51" firstAttribute="trailing" secondItem="FK7-QA-Yb1" secondAttribute="trailing" id="crd-MA-b1J"/>
+                            <constraint firstItem="xOH-Jq-R51" firstAttribute="trailing" secondItem="6cD-CM-zOt" secondAttribute="trailing" constant="16" id="eS0-N1-LdK"/>
+                            <constraint firstItem="FK7-QA-Yb1" firstAttribute="leading" secondItem="xOH-Jq-R51" secondAttribute="leading" id="g6q-wS-7N4"/>
+                            <constraint firstItem="FK7-QA-Yb1" firstAttribute="top" secondItem="VRy-xc-8e4" secondAttribute="top" id="kgh-lR-peY"/>
+                            <constraint firstItem="xOH-Jq-R51" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6cD-CM-zOt" secondAttribute="bottom" id="zOv-34-sgA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xOH-Jq-R51"/>
+                    </view>
+                    <connections>
+                        <outlet property="gameCoverImageView" destination="FK7-QA-Yb1" id="7mj-uC-rer"/>
+                        <outlet property="gameDescriptionLabel" destination="6GD-4X-CXX" id="Bag-a4-emE"/>
+                        <outlet property="gameTitleLabel" destination="gKY-Ys-UHD" id="aMB-7t-b9e"/>
+                        <outlet property="readMoreButton" destination="nGE-Tq-ZyK" id="hoi-5M-yCG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1YE-KG-U2N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3606" y="130"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="game details title gradient" width="375" height="192"/>
+        <namedColor name="Black">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray">
+            <color red="0.54000002145767212" green="0.54000002145767212" blue="0.56000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
