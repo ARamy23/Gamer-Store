@@ -26,11 +26,11 @@ class FavoritesViewController: UIViewController {
         return EmptyStateViewController(.favorites)
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         setupUI()
         bind()
-        presentation.viewDidLoad()
+        presentation.viewWillAppear()
     }
     
     private func bind() {
@@ -61,10 +61,16 @@ class FavoritesViewController: UIViewController {
         favoriteGamesTableView.delegate = dataSource
         favoriteGamesTableView.dataSource = dataSource
         favoriteGamesTableView.separatorStyle = .none
+        dataSource.canEdit = true
         
         dataSource.didSelectGame = { [weak self] indexPath in
             guard let self = self else { return }
             self.presentation.didSelectGame(at: indexPath)
+        }
+        
+        dataSource.swipesToDelete = { [weak self] indexPath in
+            guard let self = self else { return }
+            self.presentation.swipesToDelete(indexPath)
         }
     }
     

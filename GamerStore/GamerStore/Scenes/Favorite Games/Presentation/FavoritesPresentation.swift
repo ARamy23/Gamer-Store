@@ -21,7 +21,7 @@ final class FavoritesPresentation {
         self.router = router
     }
     
-    func viewDidLoad() {
+    func viewWillAppear() {
         getFavoritesFromCache()
         setupNavigationTitle()
     }
@@ -32,6 +32,20 @@ final class FavoritesPresentation {
         let gameDetailsViewModel = GameDetailsViewModel(game: gameViewModel)
         vc.game = gameDetailsViewModel
         router.push(view: vc)
+    }
+    
+    func swipesToDelete(_ indexPath: IndexPath) {
+        let confirmAction: AlertAction = ("Confirm", .destructive, {
+            var newCacheFavorites = self.favorites.value ?? []
+            let game = newCacheFavorites[indexPath.row]
+            newCacheFavorites.removeAll(where: { $0.id == game.id })
+            self.cache.saveObject(newCacheFavorites, key: CachingKey.favorites.key)
+            self.getFavoritesFromCache()
+            self.setupNavigationTitle()
+        })
+        
+        let cancelAction: AlertAction = ("Cancel", .cancel, { })
+        router.alertWithAction(title: "Are you sure", message: "you want to remove this from your favourites?", alertStyle: .alert, actions: [confirmAction, cancelAction])
     }
     
     private func getFavoritesFromCache() {

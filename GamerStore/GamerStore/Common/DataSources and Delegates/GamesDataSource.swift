@@ -10,8 +10,12 @@ import UIKit.UICollectionView
 
 final class GamesDataSource: NSObject {
     var games: [GameViewModel] = []
+    
+    var canEdit: Bool = false
+    
     var didSelectGame: ((IndexPath) -> Void)?
     var didDisplayGame: ((IndexPath) -> Void)?
+    var swipesToDelete: ((IndexPath) -> Void)?
 }
 
 extension GamesDataSource: UITableViewDelegate, UITableViewDataSource {
@@ -41,5 +45,14 @@ extension GamesDataSource: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return canEdit
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        swipesToDelete?(indexPath)
     }
 }

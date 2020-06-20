@@ -38,7 +38,6 @@ final class GameDetailsPresentation {
         self.network = network
         self.cache = cache
         self.router = router
-        self.setupInitialState()
     }
     
     func didTapReadMore() {
@@ -68,13 +67,13 @@ final class GameDetailsPresentation {
                 newCacheFavourites[index] = toBeCachedGame
             } else {
                 newCacheFavourites.append(toBeCachedGame)
-                cache.saveObject([toBeCachedGame], key: CachingKey.favorites.key)
+                cache.saveObject(newCacheFavourites, key: CachingKey.favorites.key)
             }
             favoriteButtonTitle.value = "Favourited"
         }
     }
     
-    private func setupInitialState() {
+    func viewDidLoad() {
         let favoriteButtonTitle = isGameAlreadyFavorited ? "Favourited" : "Favourite"
         self.favoriteButtonTitle.value = favoriteButtonTitle
     }
