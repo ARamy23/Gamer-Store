@@ -19,10 +19,10 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cV0-xh-LMl">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstItem="cV0-xh-LMl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AUm-lD-fRE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cV0-xh-LMl" secondAttribute="trailing" id="KmB-Zz-XI3"/>
@@ -78,7 +78,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Game Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHG-je-zyc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" name="Black"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="lineHeightMultiple">
@@ -90,7 +90,7 @@
                                                                 <rect key="frame" x="0.0" y="28.5" width="382" height="48"/>
                                                                 <string key="text">Rockstar Games went bigger, since their previous installment of the series. You get complicated and realistic world-building from Liberty City of GTA4 in the setting of lively and diverse Los Santos, from an old favorite GTA San Andreas, 561 different vehicles (Including every transport you can operate) zzzzzzzzzzzzzzz</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" name="Black"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="lineHeightMultip">
@@ -99,7 +99,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="EHG-je-zyc" firstAttribute="top" secondItem="aIW-De-xml" secondAttribute="top" id="8Tq-bC-Tfv"/>
                                                             <constraint firstItem="EHG-je-zyc" firstAttribute="leading" secondItem="aIW-De-xml" secondAttribute="leading" id="Jki-Oz-hJd"/>
@@ -170,7 +170,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="gKY-Ys-UHD" firstAttribute="trailing" secondItem="FK7-QA-Yb1" secondAttribute="trailing" constant="-16" id="3hN-57-LQw"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6cD-CM-zOt" secondAttribute="bottom" id="8Et-kT-81G"/>
@@ -199,7 +199,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="sMp-ws-TCk" secondAttribute="bottom" id="6It-l0-fjE"/>
                             <constraint firstAttribute="trailing" secondItem="sMp-ws-TCk" secondAttribute="trailing" id="YJ0-v1-sdD"/>
@@ -227,6 +227,9 @@
         </namedColor>
         <namedColor name="Gray">
             <color red="0.54000002145767212" green="0.54000002145767212" blue="0.56000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
