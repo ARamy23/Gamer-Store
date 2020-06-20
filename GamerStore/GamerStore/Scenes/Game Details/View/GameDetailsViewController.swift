@@ -24,10 +24,21 @@ class GameDetailsViewController: UIViewController {
     }
     
     private func setupUI() {
+        setupViewData()
+        setupNavigationBar()
+    }
+    
+    private func setupViewData() {
         gameCoverImageView.setImageWith(game?.imageURL, #imageLiteral(resourceName: "xbox-283116_1920"))
         gameTitleLabel.text = game?.title
 //        gameDescriptionLabel.text = game?.description
         gameDescriptionLabel.numberOfLines = 4
+    }
+    
+    private func setupNavigationBar() {
+        let favoriteButton = UIBarButtonItem(title: "Favourite", style: .plain, target: self, action: #selector(didTapFavorite))
+        navigationItem.rightBarButtonItem = favoriteButton
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func bind() {
@@ -53,5 +64,9 @@ class GameDetailsViewController: UIViewController {
     
     @IBAction private func didTapVisitWebsite() {
         // presentation.didTapVisitWebsite()
+    }
+    
+    @objc private func didTapFavorite() {
+        // presentation.didTapFavorite()
     }
 }
