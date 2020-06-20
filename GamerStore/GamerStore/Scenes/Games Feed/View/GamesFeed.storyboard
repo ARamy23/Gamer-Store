@@ -17,30 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXx-et-FGA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cV0-xh-LMl">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bo6-9h-nCw">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zXx-et-FGA" secondAttribute="bottom" id="QrW-GO-2FO"/>
-                            <constraint firstItem="zXx-et-FGA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Tyf-Ct-nyc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zXx-et-FGA" secondAttribute="trailing" id="mMd-fD-IXT"/>
-                            <constraint firstItem="zXx-et-FGA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sni-cF-JmD"/>
+                            <constraint firstItem="cV0-xh-LMl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AUm-lD-fRE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cV0-xh-LMl" secondAttribute="trailing" id="KmB-Zz-XI3"/>
+                            <constraint firstItem="cV0-xh-LMl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XYv-j6-WB0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cV0-xh-LMl" secondAttribute="bottom" id="fj1-WU-GPN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="BMZ-bo-dV7"/>
                     <connections>
-                        <outlet property="gamesCollectionView" destination="zXx-et-FGA" id="1oo-QS-f4r"/>
+                        <outlet property="gamesTableView" destination="cV0-xh-LMl" id="m5J-5d-eiV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

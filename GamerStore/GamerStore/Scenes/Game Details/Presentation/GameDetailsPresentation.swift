@@ -23,7 +23,7 @@ final class GameDetailsPresentation {
     private var shouldShowAllOfDescription: Bool = false
     
     private var cachedFavorites: [GameViewModel]? {
-        return cache.getObject([GameViewModel].self, key: CachingKey.favorites.rawValue)
+        return cache.getObject([GameViewModel].self, key: CachingKey.favorites.key)
     }
     
     private var isGameAlreadyFavorited: Bool {
@@ -59,7 +59,7 @@ final class GameDetailsPresentation {
         if isGameAlreadyFavorited {
             var newCacheFavorites = cachedFavorites ?? []
             newCacheFavorites.removeAll(where: { $0.id == game.id })
-            cache.saveObject(newCacheFavorites, key: CachingKey.favorites.rawValue)
+            cache.saveObject(newCacheFavorites, key: CachingKey.favorites.key)
             favoriteButtonTitle.value = "Favourite"
         } else {
             var newCacheFavourites = cachedFavorites ?? []
@@ -68,7 +68,7 @@ final class GameDetailsPresentation {
                 newCacheFavourites[index] = toBeCachedGame
             } else {
                 newCacheFavourites.append(toBeCachedGame)
-                cache.saveObject([toBeCachedGame], key: CachingKey.favorites.rawValue)
+                cache.saveObject([toBeCachedGame], key: CachingKey.favorites.key)
             }
             favoriteButtonTitle.value = "Favourited"
         }

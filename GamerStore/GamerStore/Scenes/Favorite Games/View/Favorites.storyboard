@@ -16,29 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qtf-Qp-wbT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pmr-sa-qOx">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fu4-6z-o43">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qtf-Qp-wbT" firstAttribute="leading" secondItem="oNU-f8-QwS" secondAttribute="leading" id="77E-La-54u"/>
-                            <constraint firstItem="qtf-Qp-wbT" firstAttribute="top" secondItem="oNU-f8-QwS" secondAttribute="top" id="G7Q-fq-83O"/>
-                            <constraint firstItem="oNU-f8-QwS" firstAttribute="trailing" secondItem="qtf-Qp-wbT" secondAttribute="trailing" id="JOh-3I-QbK"/>
-                            <constraint firstItem="oNU-f8-QwS" firstAttribute="bottom" secondItem="qtf-Qp-wbT" secondAttribute="bottom" id="y0f-ZO-seU"/>
+                            <constraint firstItem="oNU-f8-QwS" firstAttribute="bottom" secondItem="pmr-sa-qOx" secondAttribute="bottom" id="2Fa-wR-S6w"/>
+                            <constraint firstItem="oNU-f8-QwS" firstAttribute="trailing" secondItem="pmr-sa-qOx" secondAttribute="trailing" id="CUd-hD-3YC"/>
+                            <constraint firstItem="pmr-sa-qOx" firstAttribute="top" secondItem="oNU-f8-QwS" secondAttribute="top" id="EAS-RQ-chc"/>
+                            <constraint firstItem="pmr-sa-qOx" firstAttribute="leading" secondItem="oNU-f8-QwS" secondAttribute="leading" id="Edo-1m-Yr8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oNU-f8-QwS"/>
                     </view>
                     <connections>
-                        <outlet property="favoriteGamesCollectionView" destination="qtf-Qp-wbT" id="Bze-ux-ZL2"/>
+                        <outlet property="favoriteGamesTableView" destination="pmr-sa-qOx" id="hb1-hJ-kqX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAG-ZN-Smj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

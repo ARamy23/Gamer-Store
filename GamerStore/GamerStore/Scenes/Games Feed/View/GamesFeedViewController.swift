@@ -10,7 +10,7 @@ import UIKit
 
 class GamesFeedViewController: UIViewController {
 
-    @IBOutlet weak var gamesCollectionView: UICollectionView!
+    @IBOutlet weak var gamesTableView: UITableView!
     
     private lazy var router: RouterProtocol = {
         let router = Router()
@@ -53,7 +53,7 @@ class GamesFeedViewController: UIViewController {
             guard let self = self else { return }
             self.refreshControl.endRefreshing()
             self.dataSource.games = games
-            self.gamesCollectionView.reloadData()
+            self.gamesTableView.reloadData()
         }
     }
     
@@ -63,10 +63,11 @@ class GamesFeedViewController: UIViewController {
     }
     
     private func setupGamesFeed() {
-        gamesCollectionView.register(nibWithCellClass: GamesFeedCollectionViewCell.self)
-        gamesCollectionView.delegate = dataSource
-        gamesCollectionView.dataSource = dataSource
-        gamesCollectionView.refreshControl = self.refreshControl
+        gamesTableView.register(nibWithCellClass: GamesFeedTableViewCell.self)
+        gamesTableView.delegate = dataSource
+        gamesTableView.dataSource = dataSource
+        gamesTableView.refreshControl = self.refreshControl
+        gamesTableView.separatorStyle = .none
         
         dataSource.didSelectGame = { [weak self] indexPath in
             guard let self = self else { return }

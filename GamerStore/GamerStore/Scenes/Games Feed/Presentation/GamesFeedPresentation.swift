@@ -84,12 +84,16 @@ final class GamesFeedPresentation {
     
     func didSelectGame(at indexPath: IndexPath) {
         router.startActivityIndicator()
-        let gameID = (games.value ?? [])[indexPath.item].id
+        let game = (games.value ?? [])[indexPath.item]
+        let gameID = game.id
         GameDetailsFetcher(gameID: gameID, network: network).fetchGameDetails { [weak self] results in
             guard let self = self else { return }
             self.router.stopActivityIndicator()
             switch results {
             case .success(let gameDetails):
+                self.cache.saveObject(game, key: CachingKey.seenGame(gameID).key)
+                game.didOpenBefore = true
+                self.games.value?[indexPath.item] = game
                 let vc = Storyboard.GamesFeed.viewController(GameDetailsViewController.self)
                 let gameViewModel = GameDetailsViewModel(game: gameDetails)
                 vc.game = gameViewModel
@@ -101,7 +105,11 @@ final class GamesFeedPresentation {
     }
     
     private func mapGamesToViewModels(_ games: [Game]) -> [GameViewModel] {
-        return games.map { GameViewModel(game: $0) }
+        return games.map {
+            let viewModel = GameViewModel(game: $0)
+            viewModel.didOpenBefore = self.cache.getObject(GameViewModel.self, key: CachingKey.seenGame(viewModel.id).key) != nil
+            return viewModel
+        }
     }
     
     private func showAlert(_ message: String) {
