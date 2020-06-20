@@ -30,7 +30,7 @@ extension UILabel {
             let attrString = NSMutableAttributedString()
             if let text = self.text {
                 attrString.append( NSMutableAttributedString(string: text))
-                attrString.addAttribute(NSAttributedString.Key.font, value: self.font, range: NSMakeRange(0, attrString.length))
+                attrString.addAttribute(NSAttributedString.Key.font, value: self.font as Any, range: NSMakeRange(0, attrString.length))
             }
             else if let attributedText = self.attributedText {
                 attrString.append( attributedText)
