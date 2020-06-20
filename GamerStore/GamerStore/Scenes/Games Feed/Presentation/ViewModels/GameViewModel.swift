@@ -9,7 +9,7 @@
 import Foundation
 
 class GameViewModel: Codable {
-    let id: String
+    var id: String
     let title: String
     let metacritic: Int
     let genres: String
@@ -51,5 +51,16 @@ class GameViewModel: Codable {
         self.description = game.description
         self.redditURL = game.redditURL
         self.websiteURL = game.websiteURL
+    }
+    
+    init() {
+        self.id = ""
+        self.title = ""
+        self.metacritic = 0
+        self.genres = ""
+        self.imageURL = ""
+        self.description = nil
+        self.redditURL = nil
+        self.websiteURL = nil
     }
 }

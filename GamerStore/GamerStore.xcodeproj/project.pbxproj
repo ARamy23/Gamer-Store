@@ -35,6 +35,8 @@
 		B8BD6F04249EB2A3004AD7F0 /* RouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD6F03249EB2A3004AD7F0 /* RouterMock.swift */; };
 		B8BD6F06249EB32D004AD7F0 /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD6F05249EB32D004AD7F0 /* NetworkMock.swift */; };
 		B8C070F6249EC9EB005A3372 /* GameDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C070F5249EC9EB005A3372 /* GameDetailsTests.swift */; };
+		B8C070F9249ECB97005A3372 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C070F8249ECB97005A3372 /* System.swift */; };
+		B8C070FB249ECCF5005A3372 /* SystemMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C070FA249ECCF5005A3372 /* SystemMock.swift */; };
 		B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09402249C1B84003512B4 /* AppDelegate.swift */; };
 		B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */; };
 		B8C0940A249C1B84003512B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C09408249C1B84003512B4 /* Main.storyboard */; };
@@ -102,6 +104,8 @@
 		B8BD6F03249EB2A3004AD7F0 /* RouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterMock.swift; sourceTree = "<group>"; };
 		B8BD6F05249EB32D004AD7F0 /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
 		B8C070F5249EC9EB005A3372 /* GameDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsTests.swift; sourceTree = "<group>"; };
+		B8C070F8249ECB97005A3372 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		B8C070FA249ECCF5005A3372 /* SystemMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMock.swift; sourceTree = "<group>"; };
 		B8C093FF249C1B84003512B4 /* GamerStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamerStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C09402249C1B84003512B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +347,7 @@
 				B8BD6F01249EB240004AD7F0 /* CacheMock.swift */,
 				B8BD6F03249EB2A3004AD7F0 /* RouterMock.swift */,
 				B8BD6F05249EB32D004AD7F0 /* NetworkMock.swift */,
+				B8C070FA249ECCF5005A3372 /* SystemMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -361,6 +366,14 @@
 				B8C070F5249EC9EB005A3372 /* GameDetailsTests.swift */,
 			);
 			path = GameDetails;
+			sourceTree = "<group>";
+		};
+		B8C070F7249ECB8E005A3372 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				B8C070F8249ECB97005A3372 /* System.swift */,
+			);
+			path = System;
 			sourceTree = "<group>";
 		};
 		B8C093F6249C1B84003512B4 = {
@@ -472,6 +485,7 @@
 		B8C0941D249C1DC3003512B4 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				B8C070F7249ECB8E005A3372 /* System */,
 				B8C09425249C2299003512B4 /* Cache */,
 				B8C09424249C2295003512B4 /* Network */,
 				B8C09423249C2290003512B4 /* Router */,
@@ -758,6 +772,7 @@
 			files = (
 				B8BD6F04249EB2A3004AD7F0 /* RouterMock.swift in Sources */,
 				B8BD6F02249EB240004AD7F0 /* CacheMock.swift in Sources */,
+				B8C070FB249ECCF5005A3372 /* SystemMock.swift in Sources */,
 				B8BD6F06249EB32D004AD7F0 /* NetworkMock.swift in Sources */,
 				B8BD6EF2249EB11F004AD7F0 /* GamerStoreTests.swift in Sources */,
 				B8BD6EFE249EB206004AD7F0 /* BaseSceneTests.swift in Sources */,
@@ -786,6 +801,7 @@
 				B8C09427249C22AC003512B4 /* Router.swift in Sources */,
 				B8BD6EE4249E8351004AD7F0 /* GamesFeedTableViewCell.swift in Sources */,
 				B8BD6ED9249E6A72004AD7F0 /* GamesDataSource.swift in Sources */,
+				B8C070F9249ECB97005A3372 /* System.swift in Sources */,
 				B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */,
 				B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */,
 				B8BD6ECC249E611A004AD7F0 /* GameDetailsResponse.swift in Sources */,

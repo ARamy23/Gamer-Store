@@ -13,12 +13,13 @@ class BaseSceneTests: XCTestCase {
     var network: NetworkMock!
     var cache: CacheMock!
     var router: RouterMock!
-    
+    var system: SystemMock!
     override func setUp() {
         super.setUp()
         self.network = NetworkMock()
         self.cache = CacheMock()
         self.router = RouterMock()
+        self.system = SystemMock()
     }
     
     override func tearDown() {
@@ -26,5 +27,6 @@ class BaseSceneTests: XCTestCase {
         self.network = nil
         self.cache = nil
         self.router = nil
+        self.system = nil
     }
 }

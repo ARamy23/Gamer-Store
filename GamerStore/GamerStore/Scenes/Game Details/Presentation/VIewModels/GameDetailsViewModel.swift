@@ -9,7 +9,7 @@
 import Foundation
 
 final class GameDetailsViewModel: Codable {
-    let id: String
+    var id: String
     let title: String
     let description: String
     let metacritic: Int
