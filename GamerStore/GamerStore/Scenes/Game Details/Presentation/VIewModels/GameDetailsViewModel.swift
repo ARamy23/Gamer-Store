@@ -17,7 +17,17 @@ final class GameDetailsViewModel: Codable {
     let redditURL: String
     let websiteURL: String
     let genres: String
-    var isFavorite: Bool = false
+    
+    init() {
+        id = ""
+        title = ""
+        description = ""
+        metacritic = 0
+        imageURL = ""
+        redditURL = ""
+        websiteURL = ""
+        genres = ""
+    }
     
     init(game: GameDetails) {
         self.id = String(game.id ?? 0)
@@ -38,7 +48,6 @@ final class GameDetailsViewModel: Codable {
         self.title = game.title
         self.description = description
         self.imageURL = game.imageURL
-        self.isFavorite = true
         self.genres = game.genres
         self.metacritic = game.metacritic
         self.redditURL = redditURL

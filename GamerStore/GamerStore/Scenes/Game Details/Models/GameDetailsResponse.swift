@@ -19,6 +19,18 @@ struct GameDetails: Codable {
     let metacritic: Int?
     let genres: [Genre]
 
+    init() {
+        self.id = 0
+        self.name = ""
+        self.gameDetailsDescription = ""
+        self.backgroundImage = ""
+        self.website = ""
+        self.redditURL = ""
+        self.descriptionRaw = ""
+        self.metacritic = 0
+        self.genres = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case gameDetailsDescription = "description"
