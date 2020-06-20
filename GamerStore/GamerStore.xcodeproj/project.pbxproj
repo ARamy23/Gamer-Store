@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		276A0874AACB2ABED051D92D /* Pods-GamerStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GamerStore.release.xcconfig"; path = "Target Support Files/Pods-GamerStore/Pods-GamerStore.release.xcconfig"; sourceTree = "<group>"; };
+		53F316967842D4540EABA011 /* Pods-GamerStore.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GamerStore.staging.xcconfig"; path = "Target Support Files/Pods-GamerStore/Pods-GamerStore.staging.xcconfig"; sourceTree = "<group>"; };
 		5793776F5AC3FA1D64C7FF74 /* Pods_GamerStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GamerStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A4BFC4249D470B006A533C /* GamesFeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedFetcher.swift; sourceTree = "<group>"; };
 		B8A4BFC7249D4773006A533C /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -89,8 +90,8 @@
 			children = (
 				EC77CBBD199F8BFA5589CA9B /* Pods-GamerStore.debug.xcconfig */,
 				276A0874AACB2ABED051D92D /* Pods-GamerStore.release.xcconfig */,
+				53F316967842D4540EABA011 /* Pods-GamerStore.staging.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -137,6 +138,13 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		B8A4BFDA249E3C15006A533C /* Game Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Game Details";
+			sourceTree = "<group>";
+		};
 		B8C093F6249C1B84003512B4 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +186,7 @@
 		B8C09417249C1D46003512B4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B8A4BFDA249E3C15006A533C /* Game Details */,
 				B8C0941A249C1D6D003512B4 /* Favorite Games */,
 				B8C09419249C1D5F003512B4 /* Games Feed */,
 				B8C09418249C1D56003512B4 /* MainTabBar */,
@@ -535,6 +544,89 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B8A4BFDB249E4189006A533C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Staging;
+		};
+		B8A4BFDC249E4189006A533C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53F316967842D4540EABA011 /* Pods-GamerStore.staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 969Y6REAB6;
+				INFOPLIST_FILE = GamerStore/Common/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) STAGING";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ahmedramy.gamerstore.GamerStore-Staging";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
 		B8C09411249C1B86003512B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -664,6 +756,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmedramy.gamerstore.GamerStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -686,6 +779,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmedramy.gamerstore.GamerStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -700,6 +794,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8C09411249C1B86003512B4 /* Debug */,
+				B8A4BFDB249E4189006A533C /* Staging */,
 				B8C09412249C1B86003512B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -709,6 +804,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8C09414249C1B86003512B4 /* Debug */,
+				B8A4BFDC249E4189006A533C /* Staging */,
 				B8C09415249C1B86003512B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

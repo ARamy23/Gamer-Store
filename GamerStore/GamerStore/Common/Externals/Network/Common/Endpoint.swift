@@ -25,8 +25,16 @@ protocol Endpoint {
 }
 
 extension Endpoint {
+    /// Base URL for calling endpoints which is configurable according to Build
+    /// Configurations
     var baseURL: String {
+        #if DEBUG
         return "https://api.rawg.io/api/"
+        #elseif RELEASE
+        return "https://api.rawg.io/api/"
+        #elseif STAGING
+        return "https://api.rawg.io/api/"
+        #endif
     }
     
     var headers: [String: String] {
