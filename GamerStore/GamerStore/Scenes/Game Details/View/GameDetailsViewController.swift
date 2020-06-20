@@ -15,8 +15,14 @@ class GameDetailsViewController: UIViewController {
     @IBOutlet weak var gameDescriptionLabel: UILabel!
     @IBOutlet weak var readMoreButton: UIButton!
     
+    private lazy var router: RouterProtocol = {
+        let router = Router()
+        router.presentedView = self
+        return router
+    }()
+    
     var game: GameDetailsViewModel?
-    var presentation: GameDetailsPresentation?
+    lazy var presentation = GameDetailsPresentation(game: self.game!, router: self.router)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,30 +48,32 @@ class GameDetailsViewController: UIViewController {
     }
     
     private func bind() {
-        presentation?.readMoreButtonTitle.bind = { [weak self] title in
+        presentation.readMoreButtonTitle.bind = { [weak self] title in
             guard let self = self else { return }
             self.readMoreButton.setTitle(title, for: .normal)
         }
         
-        presentation?.descriptionNumberOfLines.bind = { [weak self] numberOfLines in
+        presentation.descriptionNumberOfLines.bind = { [weak self] numberOfLines in
             guard let self = self else { return }
-            self.gameDescriptionLabel.numberOfLines = numberOfLines
+            UIView.transition(with: self.view, duration: 0.6, options: .transitionCrossDissolve, animations: {
+                self.gameDescriptionLabel.numberOfLines = numberOfLines
+            }, completion: nil)
         }
     }
     
     @IBAction private func didTapReadMore() {
-         presentation?.didTapReadMore()
+         presentation.didTapReadMore()
     }
     
     @IBAction private func didTapVisitReddit() {
-         presentation?.didTapVisitReddit()
+         presentation.didTapVisitReddit()
     }
     
     @IBAction private func didTapVisitWebsite() {
-         presentation?.didTapVisitWebsite()
+         presentation.didTapVisitWebsite()
     }
     
     @objc private func didTapFavorite() {
-         presentation?.didTapFavorite()
+         presentation.didTapFavorite()
     }
 }

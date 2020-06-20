@@ -62,22 +62,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FK7-QA-Yb1">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="291"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="297"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="297" id="I4t-Jm-nWN"/>
+                                                </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game details title gradient" translatesAutoresizingMaskIntoConstraints="NO" id="hwb-nX-yRh">
-                                                <rect key="frame" x="0.0" y="99" width="414" height="192"/>
+                                                <rect key="frame" x="0.0" y="101" width="414" height="196"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game's Title" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-Ys-UHD">
-                                                <rect key="frame" x="16" y="232" width="382" height="43"/>
+                                                <rect key="frame" x="16" y="238" width="382" height="43"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6cD-CM-zOt">
-                                                <rect key="frame" x="16" y="307" width="382" height="319.5"/>
+                                                <rect key="frame" x="16" y="313" width="382" height="307.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIW-De-xml">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="88.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="76.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Game Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHG-je-zyc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
@@ -90,8 +93,8 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GD-4X-CXX">
-                                                                <rect key="frame" x="0.0" y="28.5" width="382" height="60"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GD-4X-CXX">
+                                                                <rect key="frame" x="0.0" y="28.5" width="382" height="48"/>
                                                                 <string key="text">Rockstar Games went bigger, since their previous installment of the series. You get complicated and realistic world-building from Liberty City of GTA4 in the setting of lively and diverse Los Santos, from an old favorite GTA San Andreas, 561 different vehicles (Including every transport you can operate) zzzzzzzzzzzzzzz</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <nil key="textColor"/>
@@ -118,7 +121,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGE-Tq-ZyK">
-                                                        <rect key="frame" x="0.0" y="104.5" width="382" height="44"/>
+                                                        <rect key="frame" x="0.0" y="92.5" width="382" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="mkU-Z8-LrD"/>
                                                         </constraints>
@@ -128,14 +131,14 @@
                                                         </connections>
                                                     </button>
                                                     <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRr-ks-AQu">
-                                                        <rect key="frame" x="0.0" y="164.5" width="382" height="1"/>
+                                                        <rect key="frame" x="0.0" y="152.5" width="382" height="1"/>
                                                         <color key="backgroundColor" name="Gray"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="VhF-68-GA3"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjI-rf-4HE">
-                                                        <rect key="frame" x="0.0" y="181.5" width="382" height="44"/>
+                                                        <rect key="frame" x="0.0" y="169.5" width="382" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="PA3-2K-YvP"/>
                                                         </constraints>
@@ -148,14 +151,14 @@
                                                         </connections>
                                                     </button>
                                                     <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymp-hg-Ju9">
-                                                        <rect key="frame" x="0.0" y="241.5" width="382" height="1"/>
+                                                        <rect key="frame" x="0.0" y="229.5" width="382" height="1"/>
                                                         <color key="backgroundColor" name="Gray"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Ysr-wh-2Jl"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFc-Js-IS1">
-                                                        <rect key="frame" x="0.0" y="258.5" width="382" height="44"/>
+                                                        <rect key="frame" x="0.0" y="246.5" width="382" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="s9u-ea-2xJ"/>
                                                         </constraints>
@@ -168,7 +171,7 @@
                                                         </connections>
                                                     </button>
                                                     <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HU7-7k-33e">
-                                                        <rect key="frame" x="0.0" y="318.5" width="382" height="1"/>
+                                                        <rect key="frame" x="0.0" y="306.5" width="382" height="1"/>
                                                         <color key="backgroundColor" name="Gray"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="xPH-fP-Ebz"/>
@@ -179,7 +182,6 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="FK7-QA-Yb1" firstAttribute="height" relation="lessThanOrEqual" secondItem="hng-uP-ugy" secondAttribute="height" multiplier="0.324777" constant="91.424533500000024" id="223-M8-nov"/>
                                             <constraint firstItem="gKY-Ys-UHD" firstAttribute="trailing" secondItem="FK7-QA-Yb1" secondAttribute="trailing" constant="-16" id="3hN-57-LQw"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6cD-CM-zOt" secondAttribute="bottom" id="8Et-kT-81G"/>
                                             <constraint firstItem="hwb-nX-yRh" firstAttribute="trailing" secondItem="FK7-QA-Yb1" secondAttribute="trailing" id="9rA-h3-JHb"/>
