@@ -16,6 +16,8 @@ struct GameDetails: Codable {
     let website: String?
     let redditURL: String?
     let descriptionRaw: String?
+    let metacritic: Int?
+    let genres: [Genre]
 
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -24,5 +26,7 @@ struct GameDetails: Codable {
         case website
         case redditURL = "reddit_url"
         case descriptionRaw = "description_raw"
+        case metacritic
+        case genres
     }
 }

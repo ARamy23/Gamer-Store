@@ -22,4 +22,12 @@ struct GameViewModel {
         self.genres = (game.genres ?? []).map { $0.name ?? "" }.joined(separator: ", ")
         self.imageURL = game.backgroundImage ?? ""
     }
+    
+    init(game: GameDetailsViewModel) {
+        self.id = game.id
+        self.title = game.title
+        self.metacritic = game.metacritic
+        self.genres = game.genres
+        self.imageURL = game.imageURL
+    }
 }

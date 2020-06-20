@@ -12,9 +12,11 @@ final class GameDetailsViewModel: Codable {
     let id: String
     let title: String
     let description: String
+    let metacritic: Int
     let imageURL: String
     let redditURL: String
     let websiteURL: String
+    let genres: String
     var isFavorite: Bool = false
     
     init(game: GameDetails) {
@@ -24,5 +26,7 @@ final class GameDetailsViewModel: Codable {
         self.imageURL = game.backgroundImage ?? ""
         self.redditURL = game.redditURL ?? ""
         self.websiteURL = game.website ?? ""
+        self.metacritic = game.metacritic ?? 0
+        self.genres = game.genres.map { $0.name ?? "" }.joined(separator: ", ")
     }
 }

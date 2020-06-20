@@ -10,7 +10,6 @@
         <!--Games-->
         <scene sceneID="kxv-el-hmN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MVI-yc-cox" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IEO-xP-kDC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Games" image="gamesFeedGlyph-unselected" selectedImage="gamesFeedGlyph-selected" id="sPK-DP-2Jl"/>
                     <toolbarItems/>
@@ -23,8 +22,9 @@
                         <segue destination="PY0-k3-vhP" kind="relationship" relationship="rootViewController" id="OQS-Il-hgr"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVI-yc-cox" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
+            <point key="canvasLocation" x="480" y="126"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nmp-bm-VPp">
@@ -32,11 +32,13 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="fnS-SA-OvY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qfT-R0-Ron">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="IEO-xP-kDC" kind="relationship" relationship="viewControllers" id="1zl-hK-hzp"/>
+                        <segue destination="JCj-aP-lbd" kind="relationship" relationship="viewControllers" id="xRh-R6-PAq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5S-S3-w0E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -51,10 +53,41 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCe-PW-6mx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="659"/>
+            <point key="canvasLocation" x="480" y="663"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="BeJ-Kh-xOK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JCj-aP-lbd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="favorites-unselected" selectedImage="favorites-selected" id="5uC-Lk-V7E"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zVF-A1-pXg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VtQ-fA-7IO" kind="relationship" relationship="rootViewController" id="zd0-gS-1R5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kSO-Qd-PDi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1604" y="126"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="nbp-xu-4Xt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Favorites" id="VtQ-fA-7IO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="R8R-82-WdT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wgm-2s-fiR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1603" y="663"/>
         </scene>
     </scenes>
     <resources>
+        <image name="favorites-selected" width="27" height="26"/>
+        <image name="favorites-unselected" width="27" height="26"/>
         <image name="gamesFeedGlyph-selected" width="42" height="28"/>
         <image name="gamesFeedGlyph-unselected" width="42" height="28"/>
     </resources>

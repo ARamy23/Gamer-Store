@@ -18,6 +18,8 @@ class GamesFeedViewController: UIViewController {
         return router
     }()
     
+    private let dataSource: GamesDataSource = GamesDataSource()
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
@@ -47,9 +49,10 @@ class GamesFeedViewController: UIViewController {
     }
     
     private func bind() {
-        presentation.games.bind = { [weak self] _ in
+        presentation.games.bind = { [weak self] games in
             guard let self = self else { return }
             self.refreshControl.endRefreshing()
+            self.dataSource.games = games
             self.gamesCollectionView.reloadData()
         }
     }
@@ -61,9 +64,19 @@ class GamesFeedViewController: UIViewController {
     
     private func setupGamesFeed() {
         gamesCollectionView.register(nibWithCellClass: GamesFeedCollectionViewCell.self)
-        gamesCollectionView.delegate = self
-        gamesCollectionView.dataSource = self
+        gamesCollectionView.delegate = dataSource
+        gamesCollectionView.dataSource = dataSource
         gamesCollectionView.refreshControl = self.refreshControl
+        
+        dataSource.didSelectGame = { [weak self] indexPath in
+            guard let self = self else { return }
+            self.presentation.didSelectGame(at: indexPath)
+        }
+        
+        dataSource.didDisplayGame = { [weak self] indexPath in
+            guard let self = self else { return }
+            self.presentation.prefetchGames(at: indexPath)
+        }
     }
     
     private func setupNavigationBar() {
@@ -74,36 +87,6 @@ class GamesFeedViewController: UIViewController {
     
     @objc private func refreshFeed() {
         presentation.refreshFeed()
-    }
-}
-
-extension GamesFeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presentation.games.value?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withClass: GamesFeedCollectionViewCell.self, for: indexPath)
-        let games = presentation.games.value ?? []
-        let game = games[indexPath.item]
-        cell.configure(with: game)
-        return cell
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentation.didSelectGame(at: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        presentation.prefetchGames(at: indexPath)
-    }
-}
-
-extension GamesFeedViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // The numbers here are used according to the given design
-        return CGSize(width: collectionView.frame.width, height: 136)
     }
 }
 

@@ -19,6 +19,9 @@
 		B8BD6EC9249E6036004AD7F0 /* GameDetailsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD6EC8249E6036004AD7F0 /* GameDetailsFetcher.swift */; };
 		B8BD6ECC249E611A004AD7F0 /* GameDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD6ECB249E611A004AD7F0 /* GameDetailsResponse.swift */; };
 		B8BD6ECF249E63C8004AD7F0 /* AppMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD6ECE249E63C8004AD7F0 /* AppMessages.swift */; };
+		B8BD6ED2249E6994004AD7F0 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8BD6ED0249E6994004AD7F0 /* Favorites.storyboard */; };
+		B8BD6ED6249E6A3B004AD7F0 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD6ED5249E6A3B004AD7F0 /* FavoritesViewController.swift */; };
+		B8BD6ED9249E6A72004AD7F0 /* GamesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8BD6ED8249E6A72004AD7F0 /* GamesDataSource.swift */; };
 		B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09402249C1B84003512B4 /* AppDelegate.swift */; };
 		B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */; };
 		B8C0940A249C1B84003512B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C09408249C1B84003512B4 /* Main.storyboard */; };
@@ -60,6 +63,9 @@
 		B8BD6EC8249E6036004AD7F0 /* GameDetailsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsFetcher.swift; sourceTree = "<group>"; };
 		B8BD6ECB249E611A004AD7F0 /* GameDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsResponse.swift; sourceTree = "<group>"; };
 		B8BD6ECE249E63C8004AD7F0 /* AppMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMessages.swift; sourceTree = "<group>"; };
+		B8BD6ED1249E6994004AD7F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = GamerStore/Scenes/MainTabBar/Base.lproj/Favorites.storyboard; sourceTree = SOURCE_ROOT; };
+		B8BD6ED5249E6A3B004AD7F0 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		B8BD6ED8249E6A72004AD7F0 /* GamesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesDataSource.swift; sourceTree = "<group>"; };
 		B8C093FF249C1B84003512B4 /* GamerStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamerStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C09402249C1B84003512B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +226,23 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
+		B8BD6ED3249E6A27004AD7F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B8BD6ED0249E6994004AD7F0 /* Favorites.storyboard */,
+				B8BD6ED5249E6A3B004AD7F0 /* FavoritesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B8BD6ED7249E6A5E004AD7F0 /* DataSources and Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B8BD6ED8249E6A72004AD7F0 /* GamesDataSource.swift */,
+			);
+			path = "DataSources and Delegates";
+			sourceTree = "<group>";
+		};
 		B8C093F6249C1B84003512B4 = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +273,7 @@
 		B8C09416249C1D40003512B4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B8BD6ED7249E6A5E004AD7F0 /* DataSources and Delegates */,
 				B8C0941E249C1DE6003512B4 /* Assets */,
 				B8C0941D249C1DC3003512B4 /* Externals */,
 				B8C0941C249C1DB0003512B4 /* App */,
@@ -292,6 +316,7 @@
 		B8C0941A249C1D6D003512B4 /* Favorite Games */ = {
 			isa = PBXGroup;
 			children = (
+				B8BD6ED3249E6A27004AD7F0 /* View */,
 			);
 			path = "Favorite Games";
 			sourceTree = "<group>";
@@ -519,6 +544,7 @@
 			files = (
 				B8C0943C249C4D71003512B4 /* GamesFeed.storyboard in Resources */,
 				B8C0940F249C1B86003512B4 /* LaunchScreen.storyboard in Resources */,
+				B8BD6ED2249E6994004AD7F0 /* Favorites.storyboard in Resources */,
 				B8C0940C249C1B86003512B4 /* Assets.xcassets in Resources */,
 				B8C0940A249C1B84003512B4 /* Main.storyboard in Resources */,
 				B8C09441249C4F4B003512B4 /* GamesFeedCollectionViewCell.xib in Resources */,
@@ -588,6 +614,7 @@
 				B8A4BFCA249D4930006A533C /* GamesSearcher.swift in Sources */,
 				B8BD6EC3249E5805004AD7F0 /* GameDetailsPresentation.swift in Sources */,
 				B8C09427249C22AC003512B4 /* Router.swift in Sources */,
+				B8BD6ED9249E6A72004AD7F0 /* GamesDataSource.swift in Sources */,
 				B8C09436249C4362003512B4 /* Codable + Helpers.swift in Sources */,
 				B8C09430249C35C6003512B4 /* URLSessionManager.swift in Sources */,
 				B8BD6ECC249E611A004AD7F0 /* GameDetailsResponse.swift in Sources */,
@@ -602,6 +629,7 @@
 				B8A4BFD8249D61EC006A533C /* GamesFeedRepository.swift in Sources */,
 				B8A4BFE1249E48B3006A533C /* UILabel + Extensions.swift in Sources */,
 				B8A4BFCD249D49CF006A533C /* GamesServices.swift in Sources */,
+				B8BD6ED6249E6A3B004AD7F0 /* FavoritesViewController.swift in Sources */,
 				B8A4BFC5249D470B006A533C /* GamesFeedFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,6 +637,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		B8BD6ED0249E6994004AD7F0 /* Favorites.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8BD6ED1249E6994004AD7F0 /* Base */,
+			);
+			name = Favorites.storyboard;
+			sourceTree = "<group>";
+		};
 		B8C09408249C1B84003512B4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
