@@ -83,9 +83,9 @@ final class GamesFeedPresentation {
     }
     
     func didSelectGame(at indexPath: IndexPath) {
-//        let vc = Storyboard.GamesFeed.viewController(GameDetailsViewController.self)
-//        vc.game = games.value?[indexPath.item]
-//        router.push(view: vc)
+        let vc = Storyboard.GamesFeed.viewController(GameDetailsViewController.self)
+        vc.game = games.value?[indexPath.item]
+        router.push(view: vc)
     }
     
     private func mapGamesToViewModels(_ games: [Game]) -> [GameViewModel] {

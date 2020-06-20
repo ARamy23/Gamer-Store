@@ -12,6 +12,8 @@
 		B8A4BFCA249D4930006A533C /* GamesSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4BFC9249D4930006A533C /* GamesSearcher.swift */; };
 		B8A4BFCD249D49CF006A533C /* GamesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4BFCC249D49CF006A533C /* GamesServices.swift */; };
 		B8A4BFD8249D61EC006A533C /* GamesFeedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4BFD7249D61EC006A533C /* GamesFeedRepository.swift */; };
+		B8A4BFE1249E48B3006A533C /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4BFE0249E48B3006A533C /* UILabel + Extensions.swift */; };
+		B8A4BFE3249E4A44006A533C /* GameDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A4BFE2249E4A44006A533C /* GameDetailsViewController.swift */; };
 		B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09402249C1B84003512B4 /* AppDelegate.swift */; };
 		B8C09407249C1B84003512B4 /* GamesFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */; };
 		B8C0940A249C1B84003512B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C09408249C1B84003512B4 /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		B8A4BFC9249D4930006A533C /* GamesSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesSearcher.swift; sourceTree = "<group>"; };
 		B8A4BFCC249D49CF006A533C /* GamesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesServices.swift; sourceTree = "<group>"; };
 		B8A4BFD7249D61EC006A533C /* GamesFeedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedRepository.swift; sourceTree = "<group>"; };
+		B8A4BFE0249E48B3006A533C /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		B8A4BFE2249E4A44006A533C /* GameDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsViewController.swift; sourceTree = "<group>"; };
 		B8C093FF249C1B84003512B4 /* GamerStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamerStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8C09402249C1B84003512B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8C09406249C1B84003512B4 /* GamesFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesFeedViewController.swift; sourceTree = "<group>"; };
@@ -141,8 +145,25 @@
 		B8A4BFDA249E3C15006A533C /* Game Details */ = {
 			isa = PBXGroup;
 			children = (
+				B8A4BFDD249E44D7006A533C /* View */,
 			);
 			path = "Game Details";
+			sourceTree = "<group>";
+		};
+		B8A4BFDD249E44D7006A533C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B8A4BFE2249E4A44006A533C /* GameDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B8A4BFDF249E48A8006A533C /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				B8A4BFE0249E48B3006A533C /* UILabel + Extensions.swift */,
+			);
+			path = UILabel;
 			sourceTree = "<group>";
 		};
 		B8C093F6249C1B84003512B4 = {
@@ -224,6 +245,7 @@
 		B8C0941B249C1DAB003512B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B8A4BFDF249E48A8006A533C /* UILabel */,
 				B8C14CD9249D3F1D00091A19 /* ImagesManager */,
 				B8C14CD5249D3A1900091A19 /* Storyboard */,
 				B8C14CCA249D356A00091A19 /* Dynamic */,
@@ -498,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8C14CCC249D357C00091A19 /* Dynamic.swift in Sources */,
+				B8A4BFE3249E4A44006A533C /* GameDetailsViewController.swift in Sources */,
 				B8C14CD0249D36BB00091A19 /* GamesFeedPresentation.swift in Sources */,
 				B8C0942A249C23F6003512B4 /* UIView + Extensions.swift in Sources */,
 				B8C14CD4249D36F600091A19 /* GameViewModel.swift in Sources */,
@@ -517,6 +540,7 @@
 				B8C0942E249C34DD003512B4 /* Endpoint.swift in Sources */,
 				B8C09403249C1B84003512B4 /* AppDelegate.swift in Sources */,
 				B8A4BFD8249D61EC006A533C /* GamesFeedRepository.swift in Sources */,
+				B8A4BFE1249E48B3006A533C /* UILabel + Extensions.swift in Sources */,
 				B8A4BFCD249D49CF006A533C /* GamesServices.swift in Sources */,
 				B8A4BFC5249D470B006A533C /* GamesFeedFetcher.swift in Sources */,
 			);
@@ -619,7 +643,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) STAGING";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ahmedramy.gamerstore.GamerStore-Staging";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -756,7 +780,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) DEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmedramy.gamerstore.GamerStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -779,7 +803,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) RELEASE";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmedramy.gamerstore.GamerStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
