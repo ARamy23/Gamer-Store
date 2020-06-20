@@ -25,6 +25,7 @@ final class GamesFeedRepository {
         
         if isFetchingFirstPage, !isRefreshing, let games = cache.getObject([Game].self, key: CachingKey.gamesFeed.key) {
             onFetch(.success(games))
+            return
         }
         
         network.call(GamesService.gamesFeed(pagination.pageSize, pagination.page), GamesFeedResponse.self) { (result) in

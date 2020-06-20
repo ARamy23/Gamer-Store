@@ -9,7 +9,14 @@
 import Foundation
 
 final class GamesFeedPresentation {
+    
+    private enum ViewState {
+        case browsing
+        case searching
+    }
+    
     var games = Dynamic<[GameViewModel]>([])
+    var shouldShowNoGamesFound = Dynamic<Bool>(false)
     
     private let network: NetworkProtocol
     private let router: RouterProtocol
@@ -17,8 +24,19 @@ final class GamesFeedPresentation {
     
     private var hasReachedEndOfGames: Bool = false
     private var isPrefetching: Bool = false
+    private var usedQuery: String = ""
     
-    private var pagination: PaginationDetails = (pageSize: 10, page: 1)
+    private var browsingPagination: PaginationDetails = (pageSize: 10, page: 1)
+    private var searchPagination: PaginationDetails = (pageSize: 10, page: 1)
+    
+    private var intendedPagination: PaginationDetails {
+        switch viewState {
+        case .searching: return searchPagination
+        case .browsing: return browsingPagination
+        }
+    }
+    
+    private var viewState: ViewState = .browsing
     
     init(router: RouterProtocol,
          network: NetworkProtocol = URLSessionManager(),
@@ -33,8 +51,9 @@ final class GamesFeedPresentation {
     }
     
     func refreshFeed() {
-        pagination = (10, 1)
-        GamesFeedFetcher(pagination: pagination, network: network, cache: cache)
+        browsingPagination = (10, 1)
+        searchPagination = (10, 1)
+        GamesFeedFetcher(pagination: intendedPagination, network: network, cache: cache)
             .refreshGamesFeed { (results) in
                 switch results {
                 case let .success(games):
@@ -45,24 +64,36 @@ final class GamesFeedPresentation {
         }
     }
     
+    func didBeginSearching() {
+        viewState = .searching
+        browsingPagination = (10, 1)
+        games.value?.removeAll()
+    }
+    
     func searchQueryDidChnage(_ searchText: String) {
         guard searchText.count > 3 else { return }
         router.startActivityIndicator()
         GamesSearcher(query: searchText,
-                      pagination: pagination,
+                      pagination: intendedPagination,
                       network: network)
             .search { [weak self] results in
                 guard let self = self else { return }
                 self.router.stopActivityIndicator()
+                self.isPrefetching = false
                 switch results {
                 case let .success(games):
-                    self.games.value = self.mapGamesToViewModels(games)
+                    self.handleAppendingIncomingGamesToDataSource(games)
                 case .failure:
-                    self.showAlert(AppMessages.GamesFeed.couldntFindQuery.rawValue) // TODO: - Notify The view that search query was not found
+                    self.showAlert(AppMessages.General.somethingWentWrong.rawValue)
                 }
-                
-                
         }
+    }
+    
+    func didCancelSearching() {
+        viewState = .browsing
+        searchPagination = (10, 1)
+        games.value?.removeAll()
+        refreshFeed()
     }
     
     /// Prefetches games before user reaches the end of page for enhanced UX
@@ -70,15 +101,21 @@ final class GamesFeedPresentation {
     func prefetchGames(at indexPath: IndexPath) {
         
         let currentItemIndex = indexPath.item
-        let prefetchingRange = 4
+        let prefetchingRange = 3
         let currentFetchedGamesTotalCount = games.value?.count ?? 0
         
         let shouldPrefetchAds = currentItemIndex >= currentFetchedGamesTotalCount - 1 - prefetchingRange
         
         if shouldPrefetchAds, !isPrefetching, !hasReachedEndOfGames {
             isPrefetching = true
-            pagination.page += 1
-            fetchGamesFeed()
+            switch viewState {
+            case .browsing:
+                browsingPagination.page += 1
+                fetchGamesFeed()
+            case .searching:
+                searchPagination.page += 1
+                searchQueryDidChnage(usedQuery)
+            }
         }
     }
     
@@ -118,9 +155,24 @@ final class GamesFeedPresentation {
                           actions: [("Ok", .default)])
     }
     
+    fileprivate func handleAppendingIncomingGamesToDataSource(_ games: ([Game])) {
+        let currentDisplayedGames = self.games.value ?? []
+        let viewModels = self.mapGamesToViewModels(games)
+        self.hasReachedEndOfGames = games.count < self.intendedPagination.pageSize
+        if games.isEmpty && currentDisplayedGames.isEmpty {
+            self.shouldShowNoGamesFound.value = true
+        } else if currentDisplayedGames.isEmpty {
+            self.shouldShowNoGamesFound.value = false
+            self.games.value = viewModels
+        } else {
+            self.shouldShowNoGamesFound.value = false
+            self.games.value?.append(contentsOf: viewModels)
+        }
+    }
+    
     private func fetchGamesFeed() {
         router.startActivityIndicator()
-        GamesFeedFetcher(pagination: pagination,
+        GamesFeedFetcher(pagination: intendedPagination,
                          network: network,
                          cache: cache)
             .fetchGamesFeed { [weak self] results in
@@ -129,15 +181,7 @@ final class GamesFeedPresentation {
                 self.isPrefetching = false
                 switch results {
                 case .success(let games):
-                    let currentDisplayedGames = self.games.value ?? []
-                    let viewModels = self.mapGamesToViewModels(games)
-                    
-                    if currentDisplayedGames.isEmpty {
-                        self.games.value = viewModels
-                    } else {
-                        self.games.value?.append(contentsOf: viewModels)
-                    }
-                    
+                    self.handleAppendingIncomingGamesToDataSource(games)
                 case .failure:
                     self.showAlert(AppMessages.GamesFeed.couldntFetchGamesFeed.rawValue)
                 }

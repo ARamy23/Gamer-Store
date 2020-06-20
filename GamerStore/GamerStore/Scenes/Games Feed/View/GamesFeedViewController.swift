@@ -38,6 +38,10 @@ class GamesFeedViewController: UIViewController {
        return searchController
     }()
     
+    lazy var emptySearchView: EmptyStateViewController = {
+        return EmptyStateViewController(.search)
+    }()
+    
     private lazy var presentation = GamesFeedPresentation(router: router)
     
     
@@ -54,6 +58,11 @@ class GamesFeedViewController: UIViewController {
             self.refreshControl.endRefreshing()
             self.dataSource.games = games
             self.gamesTableView.reloadData()
+        }
+        
+        presentation.shouldShowNoGamesFound.bind = { [weak self] shouldShowNoGamesFound in
+            guard let self = self else { return }
+            self.gamesTableView.backgroundView = shouldShowNoGamesFound ? self.emptySearchView.view : nil
         }
     }
     
@@ -84,6 +93,7 @@ class GamesFeedViewController: UIViewController {
         navigationItem.title = "Games"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     @objc private func refreshFeed() {
@@ -94,5 +104,13 @@ class GamesFeedViewController: UIViewController {
 extension GamesFeedViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         presentation.searchQueryDidChnage(searchText)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        presentation.didBeginSearching()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        presentation.didCancelSearching()
     }
 }

@@ -35,6 +35,7 @@ extension GamesDataSource: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard tableView.indexPathsForVisibleRows?.contains(indexPath) == true else { return }
         didDisplayGame?(indexPath)
     }
     
