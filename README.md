@@ -111,3 +111,34 @@ i thought that i'd write a lot explaining it, but you can check the tests module
 - [x] layout that fits landscape and portrait
 - [x] supports iPhone and iPad
 - [x] Unit tests
+- [x] 54.4% Test Coverage
+
+## Some Design Decisions
+- Break down user flows into Storyboards branching from the Main.storyboard where the Main.storyboard contains a MainTabBar and each tabBar have different flows, for our case, a Favorite has it's own Storyboard, Game Feed and Game Details has their own Storyboard
+  Breaking it down this way will ensure that the project doesn't take much time to open a Storyboard when the app gets bigger
+- Using Kingfisher for caching Images
+  After some trial and error trying to implement my own solution for images caching, I realized that using Kingfisher is a better option and far more suited for a production code, because Kingfisher provides us with many options that would require more time to implement and the pod itself has it's own tests
+- Using Colors directly from the assets and wrap it inside a GSColor Enum
+  this decision allowed for a seamless and easy to implement Dark Mode without any complex logic, of course we can set something like a ThemeManager that would allow us to configure the app's colors from UIAppearance() API, but i think this decision is far more easier
+- Centralize App Messages inside AppMessages enum
+  This decision Is something I took to make the localization process easier, since we have all the app's strings centralized in one place, so localizating it would be as easy as `"Message here".localized()`
+- Adding @IBInspectable attributes to UIView and UILabel and the scalability of this decision
+  Configuring the UI from the IB greatly boosts the development speed, that's what I took this decision upon, and when we want to localize the project, we can always add an IBInspectable property to UILabel and other Text Based Views, to have a key from the localizable files and replace the text with this value of this key
+- Storyboard enum and why it made building a new Scene extremely easier
+  The Storyboard enum is somekind of a builder pattern which you just give the type of the UIViewController you want to initialize and it fetches that UIViewController from the desired Storyboard and you can property inject it with it's dependencies (Disclaimer: We can update this builder to use the new Storyboard Injection method to pass our dependencies but I'vent tapped into that yet)
+- Dynamic<T>
+  Dynamic is an observable pattern that is solely dependent on property observer (didSet), where when the value of this class changes, it channels this mutation to all of those who bind (subscribes) to this object, it allowed for seamless update in the UI from the Presentation layer and the presentation layer can be called a ViewModel in this case (MVVM) but i decided to go with the name `Presentation` to avoid naming conflictions
+
+- ViewModel and Business Model
+  The decision behind making 2 separate models, 1 for the UI and 1 for the business increased complexity and might have made a performacne overhead, but it allowed for flexibility to change in the future because if a change occured in the UI, we only have to change the ViewModel, while if there is a change in the Business Model, we only have to update our Business Model
+- Externals
+  The idea behind Externals is conforming to the SOLID Principles by doing Dependency inversion, Liskov Substitution and Single Responsibility, so we can test, maintain and scale our app without really worrying about lots of stuff
+- GameDataSource
+  This object was used solely to reuse the UI between the GameFeed and Favorites
+- EmptyStateViewController
+  This is Factory Pattern where we build an empty state according to a specification which is in this case, Search or Favorite or possibly Home
+- Build Configurations
+  I set up 3 dummy environemnts to change BaseURL between them whenever needed, of course the effect of this decision is not obvious in this project, because it has only one variation for the baseURL, but when this project scales, it will allow us to differentiate between them easily
+  
+  Another advantage for this decision, is when we have a firebase based project and this firebase project has more than one project on Firebase, we can exchange the `googleInfoplist` easily according to our Environment
+
