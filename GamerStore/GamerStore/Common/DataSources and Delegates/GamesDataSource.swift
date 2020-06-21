@@ -6,7 +6,7 @@
 //  Copyright © 2020 Ahmed Ramy. All rights reserved.
 //
 
-import UIKit.UICollectionView
+import UIKit.UITableView
 
 final class GamesDataSource: NSObject {
     var games: [GameViewModel] = []
@@ -19,10 +19,6 @@ final class GamesDataSource: NSObject {
 }
 
 extension GamesDataSource: UITableViewDelegate, UITableViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return games.count
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return games.count
     }
