@@ -26,28 +26,36 @@ I broke down the project into 4 different layers which can be seen here inspired
 here we will see 4 layers
 
 ### UI Layer
-brief: this is basically the View's layers, it consists of the View and the View Controller where both basically don't do anything except get events from the user and pass it to the next layer in line which is the presentation layer, and they await data to display through an observer pattern
+**Brief**: this is basically the View's layers, it consists of the View and the View Controller where both basically don't do anything except get events from the user and pass it to the next layer in line which is the presentation layer, and they await data to display through an observer pattern
 
-what it does?: delegates any interaction with the UI to the presentation layer
-what it expects?: data to display through call backs/delegates or observer pattern depending on the presentation layer picked design pattern
+**What it does?**: delegates any interaction with the UI to the presentation layer
+
+
+**What it expects?**: data to display through call backs/delegates or observer pattern depending on the presentation layer picked design pattern
 
 ### Presentation Layer
-brief: this is where the UI logic gets handled, meaning that how many sections or how many cells that should be displayed goes here, things like pagination or lazy loading (prefetching), any intensive logic that is not related to the UI is delegated to the next layer which is the business layer
+**Brief**: this is where the UI logic gets handled, meaning that how many sections or how many cells that should be displayed goes here, things like pagination or lazy loading (prefetching), any intensive logic that is not related to the UI is delegated to the next layer which is the business layer
 
-what it does?: handles the UI logic and notifies the View with the changes and changes backend models to view models that the UI takes to display it's data without any effort
-what it expects?: dependencies from the View and the backend data
+**What it does?**: handles the UI logic and notifies the View with the changes and changes backend models to view models that the UI takes to display it's data without any effort
+
+
+**What it expects?**: dependencies from the View and the backend data
 
 ### Business Layer
-brief: this is where all the business logic is happening, things like sorting games or actually favourting games should happen, usually this layer does computational operations on the data coming from the next layer which is the data layer and pass it back to the presentation layer for it to map it back to a ViewModel that the view can understand
+**Brief**: this is where all the business logic is happening, things like sorting games or actually favourting games should happen, usually this layer does computational operations on the data coming from the next layer which is the data layer and pass it back to the presentation layer for it to map it back to a ViewModel that the view can understand
 
-what it does?: do operations on the returned data
-what it expects?: dependencies from the presentation layer and the backend data from the data layer
+**What it does?**: do operations on the returned data
+
+
+**What it expects?**: dependencies from the presentation layer and the backend data from the data layer
 
 ### Data Layer
-brief: this is where all the networking and caching goes, it fetches the data from either network or from cache or maybe both through repository pattern
+**Brief**: this is where all the networking and caching goes, it fetches the data from either network or from cache or maybe both through repository pattern
 
-what it does?: fetch required data
-what it expects?: i decided to make this part independent, i could have used generics and reused this layer everywhere, but I think it's better to not use generics for 2 reasons
+**What it does?**: fetch required data
+
+
+**What it expects?**: i decided to make this part independent, i could have used generics and reused this layer everywhere, but I think it's better to not use generics for 2 reasons
   1. it will increase the complexity of the project
   2. i think it serves more into the separation of concern and increase maintainability
 
