@@ -73,6 +73,7 @@ final class GamesFeedPresentation {
     func searchQueryDidChange(_ searchText: String) {
         guard searchText.count > 3 else { return }
         self.usedQuery = searchText
+        searchPagination.page = 1
         router.startActivityIndicator()
         GamesSearcher(query: searchText,
                       pagination: intendedPagination,
@@ -83,10 +84,26 @@ final class GamesFeedPresentation {
                 self.isPrefetching = false
                 switch results {
                 case let .success(games):
-                    self.handleAppendingIncomingGamesToDataSource(games)
+                    self.handleDataSourceWithIncomingGames(games)
                 case .failure:
                     self.showAlert(AppMessages.General.somethingWentWrong.rawValue)
                 }
+        }
+    }
+    
+    private func paginateSearch() {
+        guard self.usedQuery.count > 3 else { return }
+        router.startActivityIndicator()
+        GamesSearcher(query: usedQuery, pagination: intendedPagination, network: network).search { [weak self] (results) in
+            guard let self = self else { return }
+            self.router.stopActivityIndicator()
+            self.isPrefetching = false
+            switch results {
+            case let .success(games):
+                self.handleAppendingIncomingGamesToDataSource(games)
+            case .failure:
+                self.showAlert(AppMessages.General.somethingWentWrong.rawValue)
+            }
         }
     }
     
@@ -115,7 +132,7 @@ final class GamesFeedPresentation {
                 fetchGamesFeed()
             case .searching:
                 searchPagination.page += 1
-                searchQueryDidChange(usedQuery)
+                paginateSearch()
             }
         }
     }
@@ -154,6 +171,17 @@ final class GamesFeedPresentation {
         self.router.alert(title: "Error",
                           message: message,
                           actions: [("Ok", .default)])
+    }
+    
+    fileprivate func handleDataSourceWithIncomingGames(_ games: [Game]) {
+        let currentDisplayedGames = self.games.value ?? []
+        let viewModels = self.mapGamesToViewModels(games)
+        if games.isEmpty && currentDisplayedGames.isEmpty && viewState == .searching {
+            self.shouldShowNoGamesFound.value = true
+        } else {
+            self.shouldShowNoGamesFound.value = false
+            self.games.value = viewModels
+        }
     }
     
     fileprivate func handleAppendingIncomingGamesToDataSource(_ games: ([Game])) {
