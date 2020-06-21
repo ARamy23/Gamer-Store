@@ -1,5 +1,11 @@
 # Gamer-Store
 
+## Summary
+
+- Read [How is Everything connected](https://github.com/ARamy23/Gamer-Store#how-is-everything-connected)?
+- Read [Why using Clean Architecture](https://github.com/ARamy23/Gamer-Store#so-why-use-clean-architecture)?
+- Read [Some Design Decisions](https://github.com/ARamy23/Gamer-Store#some-design-decisions)
+
 ## How to Install?
 
 1. `cd PROJECT_PATH_ON_YOUR_COMPUTER`
