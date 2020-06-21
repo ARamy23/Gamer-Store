@@ -9,6 +9,11 @@
 import Foundation
 import UIKit.UIApplication
 
+protocol SystemProtocol {
+    func canOpenURLExternally(url: String) -> Bool
+    func openURLExternally(url: String)
+}
+
 struct System: SystemProtocol {
     func canOpenURLExternally(url: String) -> Bool {
         guard let url = URL(string: url) else { return false }

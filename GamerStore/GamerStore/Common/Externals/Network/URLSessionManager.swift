@@ -8,6 +8,11 @@
 
 import Foundation
 
+protocol NetworkProtocol: class {
+    func call<T: Codable>(_ endpoint: Endpoint, _ expectedModel: T.Type, onComplete: @escaping ((Result<T, Error>) -> Void))
+    func cancelPreviousTask()
+}
+
 final class URLSessionManager: NetworkProtocol {
     lazy private var session = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
