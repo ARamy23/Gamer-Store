@@ -52,11 +52,11 @@ class FavoritesViewController: UIViewController {
     }
     
     private func setupUI() {
-        setupCollectionView()
+        setupTableView()
         setupNavigationBar()
     }
     
-    private func setupCollectionView() {
+    private func setupTableView() {
         favoriteGamesTableView.register(nibWithCellClass: GamesFeedTableViewCell.self)
         favoriteGamesTableView.delegate = dataSource
         favoriteGamesTableView.dataSource = dataSource
