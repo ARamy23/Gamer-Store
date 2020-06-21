@@ -1,5 +1,11 @@
 # Gamer-Store
 
+## Summary
+
+- Read [How is Everything connected](https://github.com/ARamy23/Gamer-Store#how-is-everything-connected)?
+- Read [Why using Clean Architecture](https://github.com/ARamy23/Gamer-Store#so-why-use-clean-architecture)?
+- Read [Some Design Decisions](https://github.com/ARamy23/Gamer-Store#some-design-decisions)
+
 ## How to Install?
 
 1. `cd PROJECT_PATH_ON_YOUR_COMPUTER`
@@ -7,7 +13,7 @@
 
 ## How is everything connected?
 
-I use Clean Architecture in how things are connected together and how components talk to each other, i'll explain shortly why i picked using this architecture (mostly because it's the only architecture ik, but will explain its pros in the end)
+I use Clean Architecture in how things are connected together and how components talk to each other, i'll explain shortly why i picked using this architecture
 
 So inspired from the diagram listed [here](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 specifically this diagram: 
@@ -20,28 +26,36 @@ I broke down the project into 4 different layers which can be seen here inspired
 here we will see 4 layers
 
 ### UI Layer
-brief: this is basically the View's layers, it consists of the View and the View Controller where both basically don't do anything except get events from the user and pass it to the next layer in line which is the presentation layer, and they await data to display through an observer pattern
+**Brief**: this is basically the View's layers, it consists of the View and the View Controller where both basically don't do anything except get events from the user and pass it to the next layer in line which is the presentation layer, and they await data to display through an observer pattern
 
-what it does?: delegates any interaction with the UI to the presentation layer
-what it expects?: data to display through call backs/delegates or observer pattern depending on the presentation layer picked design pattern
+**What it does?**: delegates any interaction with the UI to the presentation layer
+
+
+**What it expects?**: data to display through call backs/delegates or observer pattern depending on the presentation layer picked design pattern
 
 ### Presentation Layer
-brief: this is where the UI logic gets handled, meaning that how many sections or how many cells that should be displayed goes here, things like pagination or lazy loading (prefetching), any intensive logic that is not related to the UI is delegated to the next layer which is the business layer
+**Brief**: this is where the UI logic gets handled, meaning that how many sections or how many cells that should be displayed goes here, things like pagination or lazy loading (prefetching), any intensive logic that is not related to the UI is delegated to the next layer which is the business layer
 
-what it does?: handles the UI logic and notifies the View with the changes and changes backend models to view models that the UI takes to display it's data without any effort
-what it expects?: dependencies from the View and the backend data
+**What it does?**: handles the UI logic and notifies the View with the changes and changes backend models to view models that the UI takes to display it's data without any effort
+
+
+**What it expects?**: dependencies from the View and the backend data
 
 ### Business Layer
-brief: this is where all the business logic is happening, things like sorting games or actually favourting games should happen, usually this layer does computational operations on the data coming from the next layer which is the data layer and pass it back to the presentation layer for it to map it back to a ViewModel that the view can understand
+**Brief**: this is where all the business logic is happening, things like sorting games or actually favourting games should happen, usually this layer does computational operations on the data coming from the next layer which is the data layer and pass it back to the presentation layer for it to map it back to a ViewModel that the view can understand
 
-what it does?: do operations on the returned data
-what it expects?: dependencies from the presentation layer and the backend data from the data layer
+**What it does?**: do operations on the returned data
+
+
+**What it expects?**: dependencies from the presentation layer and the backend data from the data layer
 
 ### Data Layer
-brief: this is where all the networking and caching goes, it fetches the data from either network or from cache or maybe both through repository pattern
+**Brief**: this is where all the networking and caching goes, it fetches the data from either network or from cache or maybe both through repository pattern
 
-what it does?: fetch required data
-what it expects?: i decided to make this part independent, i could have used generics and reused this layer everywhere, but I think it's better to not use generics for 2 reasons
+**What it does?**: fetch required data
+
+
+**What it expects?**: i decided to make this part independent, i could have used generics and reused this layer everywhere, but I think it's better to not use generics for 2 reasons
   1. it will increase the complexity of the project
   2. i think it serves more into the separation of concern and increase maintainability
 
@@ -111,3 +125,34 @@ i thought that i'd write a lot explaining it, but you can check the tests module
 - [x] layout that fits landscape and portrait
 - [x] supports iPhone and iPad
 - [x] Unit tests
+- [x] 54.4% Test Coverage
+
+## Some Design Decisions
+- Break down user flows into Storyboards branching from the Main.storyboard where the Main.storyboard contains a MainTabBar and each tabBar have different flows, for our case, a Favorite has it's own Storyboard, Game Feed and Game Details has their own Storyboard
+  Breaking it down this way will ensure that the project doesn't take much time to open a Storyboard when the app gets bigger
+- Using Kingfisher for caching Images
+  After some trial and error trying to implement my own solution for images caching, I realized that using Kingfisher is a better option and far more suited for a production code, because Kingfisher provides us with many options that would require more time to implement and the pod itself has it's own tests
+- Using Colors directly from the assets and wrap it inside a GSColor Enum
+  this decision allowed for a seamless and easy to implement Dark Mode without any complex logic, of course we can set something like a ThemeManager that would allow us to configure the app's colors from UIAppearance() API, but i think this decision is far more easier
+- Centralize App Messages inside AppMessages enum
+  This decision Is something I took to make the localization process easier, since we have all the app's strings centralized in one place, so localizating it would be as easy as `"Message here".localized()`
+- Adding @IBInspectable attributes to UIView and UILabel and the scalability of this decision
+  Configuring the UI from the IB greatly boosts the development speed, that's what I took this decision upon, and when we want to localize the project, we can always add an IBInspectable property to UILabel and other Text Based Views, to have a key from the localizable files and replace the text with this value of this key
+- Storyboard enum and why it made building a new Scene extremely easier
+  The Storyboard enum is somekind of a builder pattern which you just give the type of the UIViewController you want to initialize and it fetches that UIViewController from the desired Storyboard and you can property inject it with it's dependencies (Disclaimer: We can update this builder to use the new Storyboard Injection method to pass our dependencies but I'vent tapped into that yet)
+- Dynamic<T>
+  Dynamic is an observable pattern that is solely dependent on property observer (didSet), where when the value of this class changes, it channels this mutation to all of those who bind (subscribes) to this object, it allowed for seamless update in the UI from the Presentation layer and the presentation layer can be called a ViewModel in this case (MVVM) but i decided to go with the name `Presentation` to avoid naming conflictions
+
+- ViewModel and Business Model
+  The decision behind making 2 separate models, 1 for the UI and 1 for the business increased complexity and might have made a performacne overhead, but it allowed for flexibility to change in the future because if a change occured in the UI, we only have to change the ViewModel, while if there is a change in the Business Model, we only have to update our Business Model
+- Externals
+  The idea behind Externals is conforming to the SOLID Principles by doing Dependency inversion, Liskov Substitution and Single Responsibility, so we can test, maintain and scale our app without really worrying about lots of stuff
+- GameDataSource
+  This object was used solely to reuse the UI between the GameFeed and Favorites
+- EmptyStateViewController
+  This is Factory Pattern where we build an empty state according to a specification which is in this case, Search or Favorite or possibly Home
+- Build Configurations
+  I set up 3 dummy environemnts to change BaseURL between them whenever needed, of course the effect of this decision is not obvious in this project, because it has only one variation for the baseURL, but when this project scales, it will allow us to differentiate between them easily
+  
+  Another advantage for this decision, is when we have a firebase based project and this firebase project has more than one project on Firebase, we can exchange the `googleInfoplist` easily according to our Environment
+
