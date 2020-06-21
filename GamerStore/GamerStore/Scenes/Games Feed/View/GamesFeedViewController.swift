@@ -32,6 +32,8 @@ class GamesFeedViewController: UIViewController {
         searchController.searchBar.placeholder = "Search for the games"
         searchController.searchBar.searchBarStyle = .minimal
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
         searchController.definesPresentationContext = true
         searchController.searchBar.delegate = self
 
@@ -44,12 +46,21 @@ class GamesFeedViewController: UIViewController {
     
     private lazy var presentation = GamesFeedPresentation(router: router)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         bind()
         presentation.viewDidLoad()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func bind() {
@@ -112,5 +123,9 @@ extension GamesFeedViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         presentation.didCancelSearching()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        presentation.searchQueryDidChange(searchBar.text ?? "")
     }
 }

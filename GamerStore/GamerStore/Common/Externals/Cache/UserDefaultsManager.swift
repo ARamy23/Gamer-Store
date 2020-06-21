@@ -8,6 +8,28 @@
 
 import Foundation
 
+enum CachingKey {
+    case favorites
+    case gamesFeed
+    case seenGame(_ id: String)
+    
+    var key: String {
+        switch self {
+        case .favorites: return "favorites"
+        case .gamesFeed: return "gamesFeed"
+        case .seenGame(let id): return "seenGame-\(id)"
+        }
+    }
+}
+
+protocol CacheProtocol {
+    func getData(key: String) -> [Data]?
+    func saveData(_ data: Data, key: String)
+    func getObject<T: Codable>(_ object: T.Type, key: String) -> T?
+    func saveObject<T: Codable>(_ object: T, key: String)
+    func removeObject(key: String)
+}
+
 final class UserDefaultsManager: CacheProtocol {
     func getObject<T>(_ object: T.Type, key: String) -> T? where T : Decodable, T : Encodable {
         if object is String.Type {

@@ -8,6 +8,22 @@
 
 import UIKit.UIViewController
 
+typealias AlertAction = (title: String, style: UIAlertAction.Style, action: () -> Void)
+
+protocol RouterProtocol: class {
+    var presentedView: UIViewController! { set get }
+    func present(view: UIViewController)
+    func startActivityIndicator()
+    func stopActivityIndicator()
+    func dismiss()
+    func pop()
+    func popToRoot()
+    func popTo(vc: UIViewController)
+    func push(view: UIViewController)
+    func alert(title: String, message: String, actions: [(title: String, style: UIAlertAction.Style)])
+    func alertWithAction(title: String?, message: String?, alertStyle: UIAlertController.Style, actions: [AlertAction])
+}
+
 final class Router: RouterProtocol {
     weak var presentedView: UIViewController!
     

@@ -38,10 +38,8 @@ class EmptyStateViewController: UIViewController {
         case favorites
     }
     
-    init(_ type: EmptyType) {
-        super.init(nibName: nil, bundle: nil)
-        self.type = type
-        switch type {
+    fileprivate func configureUI() {
+        switch self.type {
         case .search:
             subtitleLabel.text = AppMessages.GamesFeed.couldntFindQuery.rawValue
         case .home:
@@ -49,6 +47,12 @@ class EmptyStateViewController: UIViewController {
         case .favorites:
             subtitleLabel.text = AppMessages.Favorites.noFavoritesFound.rawValue
         }
+    }
+    
+    init(_ type: EmptyType) {
+        super.init(nibName: nil, bundle: nil)
+        self.type = type
+        self.configureUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
