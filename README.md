@@ -13,7 +13,7 @@
 
 ## How is everything connected?
 
-I use Clean Architecture in how things are connected together and how components talk to each other, i'll explain shortly why i picked using this architecture (mostly because it's the only architecture ik, but will explain its pros in the end)
+I use Clean Architecture in how things are connected together and how components talk to each other, i'll explain shortly why i picked using this architecture
 
 So inspired from the diagram listed [here](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 specifically this diagram: 
